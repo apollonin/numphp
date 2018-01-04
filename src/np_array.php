@@ -1,6 +1,6 @@
 <?php
 
-namespace Apollonin;
+namespace numphp;
 
 class np_array implements \ArrayAccess
 {
@@ -13,10 +13,20 @@ class np_array implements \ArrayAccess
     {
         $result = [];
 
-        foreach ($this->data as $index => $item)
-        {
+        array_walk($this->data, function($item) use (&$result, $arg){
             $result[] = $item > $arg;
-        }
+        });
+
+        return $result;
+    }
+
+    public function lt($arg)
+    {
+        $result = [];
+
+        array_walk($this->data, function($item) use (&$result, $arg){
+            $result[] = $item < $arg;
+        });
 
         return $result;
     }
@@ -31,7 +41,7 @@ class np_array implements \ArrayAccess
     }
 
     public function offsetUnset($offset) {
-        //pass
+        unset($this->data[$offset]);
     }
 
     public function offsetGet($offset) {
@@ -76,4 +86,31 @@ class np_array implements \ArrayAccess
         return $indexes;
     }
 
+}
+
+class operator
+{
+    public static function b_and(array $a1, array $a2)
+    {
+        $result = [];
+
+        foreach ($a1 as $key => $value)
+        {
+            $result[] = $value && $a2[$key];
+        }
+
+        return $result;
+    }
+
+    public static function b_or(array $a1, array $a2)
+    {
+        $result = [];
+
+        foreach ($a1 as $key => $value)
+        {
+            $result[] = $value || $a2[$key];
+        }
+
+        return $result;
+    }    
 }
