@@ -73,3 +73,15 @@ array(4) {
 }
 ```
 
+**array-like behaviour**
+
+You may also iterate your np_array object as usual
+
+```
+foreach ($list as $item) {
+    echo $item . " ";
+}
+
+// output
+18 25 26 29 30 34
+```
