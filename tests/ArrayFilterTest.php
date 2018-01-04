@@ -22,6 +22,6 @@ class ArrayFilterTest extends \PHPUnit_Framework_TestCase
     public function testFilter()
     {
         $res = $this->list[operator::b_and($this->list->gt(25), $this->list->lt(30))];
-        $this->assertEquals($res, [26]);
+        $this->assertEquals(current($res), [26]);
     }
 }

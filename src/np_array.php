@@ -2,40 +2,35 @@
 
 namespace numphp;
 
-class np_array implements \ArrayAccess
+use numphp\operator;
+
+class np_array implements \ArrayAccess, \Iterator
 {
     private $data;
+    private $position = 0;
 
     public function __construct(array $data)
     {
         $this->data = $data;
+        $this->position = 0;
     }
 
     public function gt($arg)
     {
-        $result = [];
-
-        array_walk($this->data, function($item) use (&$result, $arg){
-            $result[] = $item > $arg;
-        });
-
-        return $result;
+        return operator::gt($this->data, $arg);
     }
 
     public function lt($arg)
     {
-        $result = [];
-
-        array_walk($this->data, function($item) use (&$result, $arg){
-            $result[] = $item < $arg;
-        });
-
-        return $result;
+        return operator::lt($this->data, $arg);
     }
 
+    /**
+     * ArrayAccess methods
+     */
 
     public function offsetSet($offset, $value) {
-        //pass
+        // TODO. implement
     }
 
     public function offsetExists($offset) {
@@ -56,11 +51,11 @@ class np_array implements \ArrayAccess
                 $result[] = $this->data[$index];
             }
 
-            return $result;
+            return new self($result);
         }
         else
         {
-            return isset($this->data[$offset]) ? $this->data[$offset] : null;
+            return isset($this->data[$offset]) ? new self([$this->data[$offset]]) : null;
         }
     }
 
@@ -86,6 +81,31 @@ class np_array implements \ArrayAccess
         
 
         return $indexes;
+    }
+
+
+    /**
+     * Iterator methods
+     */
+    
+    public function rewind() {
+        $this->position = 0;
+    }
+
+    public function current() {
+        return $this->data[$this->position];
+    }
+
+    public function key() {
+        return $this->position;
+    }
+
+    public function next() {
+        ++$this->position;
+    }
+
+    public function valid() {
+        return $this->offsetExists($this->position);
     }
 
 }
