@@ -4,6 +4,8 @@ namespace numphp;
 
 class np_array implements \ArrayAccess
 {
+    private $data;
+
     public function __construct(array $data)
     {
         $this->data = $data;
