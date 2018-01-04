@@ -17,10 +17,10 @@ foreach ($list as $item) {
 echo "\n\n";
 
 $res1 = $list[operator::b_and($list->gt(25), $list->lt(30))];
-var_dump('res1', $res1);
+echo 'res1: ' . $res1;
 
 
 $res2 = $res1[$res1->gt(27)];
-var_dump('res2', $res2);
+echo 'res2: ' . $res2;
 
-var_dump('res3', $list[2]);
+echo 'res3:' . $list[2];

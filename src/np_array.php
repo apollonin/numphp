@@ -25,6 +25,11 @@ class np_array implements \ArrayAccess, \Iterator
         return operator::lt($this->data, $arg);
     }
 
+    public function __toString()
+    {
+        return print_r($this->data, true);
+    }
+
     /**
      * ArrayAccess methods
      */
@@ -55,7 +60,7 @@ class np_array implements \ArrayAccess, \Iterator
         }
         else
         {
-            return isset($this->data[$offset]) ? new self([$this->data[$offset]]) : null;
+            return isset($this->data[$offset]) ? $this->data[$offset] : null;
         }
     }
 
@@ -93,7 +98,7 @@ class np_array implements \ArrayAccess, \Iterator
     }
 
     public function current() {
-        return $this->data[$this->position];
+        return $this->offsetGet($this->position);
     }
 
     public function key() {
