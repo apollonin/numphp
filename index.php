@@ -15,8 +15,7 @@ class np_array implements \ArrayAccess
 
         foreach ($this->data as $index => $item)
         {
-            if ($item > $arg)
-                $result[] = $index;
+            $result[] = $item > $arg;
         }
 
         return $result;
@@ -28,7 +27,7 @@ class np_array implements \ArrayAccess
     }
 
     public function offsetExists($offset) {
-        //pass
+        return isset($this->data[$offset]);
     }
 
     public function offsetUnset($offset) {
@@ -39,16 +38,42 @@ class np_array implements \ArrayAccess
         if (is_array($offset))
         {
             $result = [];
-            foreach ($offset as $index)
+
+            foreach ($this->getIndexes($offset) as $index)
             {
                 $result[] = $this->data[$index];
             }
+
             return $result;
         }
         else
         {
             return isset($this->data[$offset]) ? $this->data[$offset] : null;
         }
+    }
+
+    private function getIndexes(array $offset)
+    {
+        $indexes = [];
+
+        if (empty($offset))
+            return $indexes;
+
+        // offset is an array of indexes already
+        if (!is_bool($offset[0]))
+        {
+            return $offset;
+        }
+
+        // convert mask array to array of indexes
+        foreach ($offset as $index => $value)
+        {
+            if ($value)
+                $indexes[] = $index;
+        }
+        
+
+        return $indexes;
     }
 
 }
