@@ -1,5 +1,9 @@
 # Numphp
 
+Numphp - designed to be as convenient as [numpy](http://www.numpy.org/).
+
+Contributions as highly appreciated.
+
 ### example of usage
 
 ```
