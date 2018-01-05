@@ -25,10 +25,6 @@ class np_array implements \ArrayAccess, \Iterator
         }
         else
             throw new \Exception("Invalid operator");
-            
-
-        // Note: value of $name is case sensitive.
-        var_dump($name, $arguments);
     }
 
     public function __toString()
