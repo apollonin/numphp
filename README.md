@@ -4,8 +4,27 @@ Numphp - designed to be as convenient as [numpy](http://www.numpy.org/).
 
 Contributions as highly appreciated.
 
-### example of usage
+## Available features
 
+
+* get item by index
+* get items by array of indexes
+* get items by condition
+  * eq - equals
+  * gt - greater than
+  * gte - greater than or equals
+  * lt - less than
+  * lte - less than or equals
+  * neq - not equals
+* get items by conditions
+  * b_and - logical AND
+  * b_or - logical OR
+
+np_array is also has classical array behaviour. So you are able to iterate through it as usual.
+
+## Usage examples
+
+**create new array**
 ```
 $list = new np_array([18, 25, 26, 30, 34]);
 ```
@@ -16,12 +35,20 @@ $list = new np_array([18, 25, 26, 30, 34]);
 $result = $list[[2,3]];
 
 // result
-array(2) {
-  [0]=>
-  int(26)
-  [1]=>
-  int(30)
-}
+Array
+(
+    [0] => 26
+    [1] => 29
+)
+```
+
+To get item as single value - pass index as single value as well
+
+```
+$result = $list[1];
+
+// result
+25
 ```
 
 **get items by condition**
@@ -30,14 +57,13 @@ array(2) {
 $result = $list[$list->gt(25)];
 
 // result
-array(3) {
-  [0]=>
-  int(26)
-  [1]=>
-  int(30)
-  [2]=>
-  int(34)
-}
+Array
+(
+    [0] => 26
+    [1] => 29
+    [2] => 30
+    [3] => 34
+)
 ```
 
 
@@ -49,28 +75,11 @@ array(3) {
 $resuilt = $list[operator::b_and($list->gt(25), $list->lt(30))];
 
 // result
-array(1) {
-  [0]=>
-  int(26)
-}
-```
-
-*b_or* - "bitwise" or
-
-```
-$resuilt = $list[operator::b_or($list->gt(25), $list->lt(25))];
-
-// result
-array(4) {
-  [0]=>
-  int(18)
-  [1]=>
-  int(26)
-  [2]=>
-  int(30)
-  [3]=>
-  int(34)
-}
+Array
+(
+    [0] => 26
+    [1] => 29
+)
 ```
 
 **array-like behaviour**
@@ -85,3 +94,4 @@ foreach ($list as $item) {
 // output
 18 25 26 29 30 34
 ```
+

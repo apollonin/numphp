@@ -23,4 +23,7 @@ echo 'res1: ' . $res1;
 $res2 = $res1[$res1->gt(27)];
 echo 'res2: ' . $res2;
 
-echo 'res3:' . $list[2];
+echo 'res3: ' . $list[2] . "\n";
+
+$res4 = $list[$list->eq(26)];
+echo 'res4: ' . $res4;

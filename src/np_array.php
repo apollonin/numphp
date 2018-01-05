@@ -15,14 +15,20 @@ class np_array implements \ArrayAccess, \Iterator
         $this->position = 0;
     }
 
-    public function gt($arg)
+    public function __call($name, $args)
     {
-        return operator::gt($this->data, $arg);
-    }
+        // operators call: eq, gt. gte, lt, etc...
+        if (in_array($name, operator::$operators))
+        {
+            array_unshift($args, $this->data);
+            return forward_static_call_array(['numphp\operator', $name], $args);
+        }
+        else
+            throw new \Exception("Invalid operator");
+            
 
-    public function lt($arg)
-    {
-        return operator::lt($this->data, $arg);
+        // Note: value of $name is case sensitive.
+        var_dump($name, $arguments);
     }
 
     public function __toString()
