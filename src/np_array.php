@@ -36,19 +36,40 @@ class np_array implements \ArrayAccess, \Iterator
      * ArrayAccess methods
      */
 
-    public function offsetSet($offset, $value) {
-        // TODO. implement
+    public function offsetSet($offset, $value) 
+    {
+        if (is_null($offset)) 
+        {
+            $this->data[] = $value;
+        } 
+        else 
+        {
+            if (is_array($offset))
+            {
+                foreach ($this->getIndexes($offset) as $index)
+                {
+                    $this->data[$index] = $value;
+                }
+            }
+            else
+            {
+                $this->data[$offset] = $value;
+            }
+        }
     }
 
-    public function offsetExists($offset) {
+    public function offsetExists($offset) 
+    {
         return isset($this->data[$offset]);
     }
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset) 
+    {
         unset($this->data[$offset]);
     }
 
-    public function offsetGet($offset) {
+    public function offsetGet($offset) 
+    {
         if (is_array($offset))
         {
             $result = [];
@@ -66,18 +87,22 @@ class np_array implements \ArrayAccess, \Iterator
         }
     }
 
+    /**
+     * Get array indexes according to conditions
+     * @param  array  $offset could be array of indexes or array of booleans
+     * @return array         
+     */
     private function getIndexes(array $offset)
     {
         $indexes = [];
 
+        // no offset - no indexes
         if (empty($offset))
-            return $indexes;
+            return [];
 
         // offset is an array of indexes already
         if (!is_bool($offset[0]))
-        {
             return $offset;
-        }
 
         // convert mask array to array of indexes
         foreach ($offset as $index => $value)
@@ -86,7 +111,6 @@ class np_array implements \ArrayAccess, \Iterator
                 $indexes[] = $index;
         }
         
-
         return $indexes;
     }
 
@@ -95,23 +119,28 @@ class np_array implements \ArrayAccess, \Iterator
      * Iterator methods
      */
     
-    public function rewind() {
+    public function rewind() 
+    {
         $this->position = 0;
     }
 
-    public function current() {
+    public function current() 
+    {
         return $this->offsetGet($this->position);
     }
 
-    public function key() {
+    public function key() 
+    {
         return $this->position;
     }
 
-    public function next() {
+    public function next() 
+    {
         ++$this->position;
     }
 
-    public function valid() {
+    public function valid() 
+    {
         return $this->offsetExists($this->position);
     }
 
