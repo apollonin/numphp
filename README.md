@@ -1,6 +1,6 @@
 # Numphp
 
-Numphp - designed to be as convenient as [numpy](http://www.numpy.org/).
+Numphp - library for numbers manipulation. If you have array of numbers, numphp gives you an ability to do wide range of useful operations.
 
 Contributions as highly appreciated.
 
@@ -19,6 +19,7 @@ Contributions as highly appreciated.
 * get items by conditions
   * b_and - logical AND
   * b_or - logical OR
+* set items values according to conditions. Conditions are the same as for selection.
 
 np_array is also has classical array behaviour. So you are able to iterate through it as usual.
 
