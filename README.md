@@ -25,6 +25,8 @@ np_array is also has classical array behaviour. So you are able to iterate throu
 
 ## Usage examples
 
+### Items selection
+
 **create new array**
 ```
 $list = new np_array([18, 25, 26, 30, 34]);
@@ -96,3 +98,62 @@ foreach ($list as $item) {
 18 25 26 29 30 34
 ```
 
+
+### Set items values
+
+**set items by indexes**
+
+```
+$newList = clone($list);
+$newList[[2,3]] = 9999;
+
+// result
+Array
+(
+    [0] => 18
+    [1] => 25
+    [2] => 9999
+    [3] => 9999
+    [4] => 30
+    [5] => 34
+)
+```
+
+**set items by conditions**
+
+```
+$newList = clone($list);
+$newList[$newList->gte(30)] = 9999;
+
+// result
+Array
+(
+    [0] => 18
+    [1] => 25
+    [2] => 26
+    [3] => 29
+    [4] => 9999
+    [5] => 9999
+)
+```
+
+**adding new items**
+
+Of course, you may add new items as usual
+
+```
+$newList = clone($list);
+$newList[] = 9999;
+
+// result 
+Array
+(
+    [0] => 18
+    [1] => 25
+    [2] => 26
+    [3] => 29
+    [4] => 30
+    [5] => 34
+    [6] => 9999
+)
+```
