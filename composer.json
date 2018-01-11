@@ -1,9 +1,10 @@
 {
-  "name": "numphp/numphp",
+  "name": "apollonin/numphp",
   "type": "library",
-  "description": "Array filter",
-  "version": "0.0.1",
+  "description": "Library for numbers manipulation.",
+  "version": "0.1.0",
   "keywords": [
+    "numbers",
     "array",
     "filter"
   ],
