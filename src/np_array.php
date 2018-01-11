@@ -11,25 +11,36 @@ class np_array implements \ArrayAccess, \Iterator
 
     public function __construct(array $data)
     {
-        $this->vector = $data;
+        $this->data = $data;
         $this->position = 0;
     }
 
     public function __call($method, $args)
     {
-        // operators call: eq, gt. gte, lt, etc...
-        if (in_array($method, operator::$operators))
+        // comparations call: eq, gt. gte, lt, etc...
+        if (in_array($method, operator::$comparations))
         {
-            array_unshift($args, $this->vector);
+            array_unshift($args, $this->data);
             return forward_static_call_array(['numphp\operator', $method], $args);
         }
+        elseif (in_array($method, operator::$operators))
+        {
+            array_unshift($args, $this->data);
+            return new self(forward_static_call_array(['numphp\operator', $method], $args));
+        }
         else
-            throw new \Exception("Invalid operator");
+            throw new \Exception("Invalid operator: " . $method);
     }
+
 
     public function __toString()
     {
-        return print_r($this->vector, true);
+        return print_r($this->data, true);
+    }
+
+    public function getData()
+    {
+        return $this->data;
     }
 
     /**
@@ -40,7 +51,7 @@ class np_array implements \ArrayAccess, \Iterator
     {
         if (is_null($offset)) 
         {
-            $this->vector[] = $value;
+            $this->data[] = $value;
         } 
         else 
         {
@@ -48,24 +59,24 @@ class np_array implements \ArrayAccess, \Iterator
             {
                 foreach ($this->getIndexes($offset) as $index)
                 {
-                    $this->vector[$index] = $value;
+                    $this->data[$index] = $value;
                 }
             }
             else
             {
-                $this->vector[$offset] = $value;
+                $this->data[$offset] = $value;
             }
         }
     }
 
     public function offsetExists($offset) 
     {
-        return isset($this->vector[$offset]);
+        return isset($this->data[$offset]);
     }
 
     public function offsetUnset($offset) 
     {
-        unset($this->vector[$offset]);
+        unset($this->data[$offset]);
     }
 
     public function offsetGet($offset) 
@@ -76,14 +87,14 @@ class np_array implements \ArrayAccess, \Iterator
 
             foreach ($this->getIndexes($offset) as $index)
             {
-                $result[] = $this->vector[$index];
+                $result[] = $this->data[$index];
             }
 
             return new self($result);
         }
         else
         {
-            return $this->vector[$offset];
+            return $this->data[$offset];
         }
     }
 

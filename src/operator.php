@@ -2,15 +2,24 @@
 
 namespace numphp;
 
-class operator
+abstract class operator
 {
-    public static $operators = [
+    public static $comparations = [
         'eq', 
         'gt',
         'gte',
         'lt',
         'lte',
         'neq'
+    ];
+
+    public static $operators = [
+        'mul',
+        'div',
+        'add',
+        'sub',
+        'pow',
+        'mod'
     ];
 
     public static $bitwise_operators = [
@@ -80,6 +89,67 @@ class operator
         array_walk($data, function($item) use (&$result, $arg){
             $result[] = $item != $arg;
         });
+
+        return $result;
+    }
+
+
+    public static function mul(array $data, $arg)
+    {
+        $result = [];
+
+        foreach ($data as $item)
+            $result[] = $item * $arg;
+
+        return $result;
+    }
+
+    public static function div(array $data, $arg)
+    {
+        $result = [];
+
+        foreach ($data as $item)
+            $result[] = $item / $arg;
+
+        return $result;
+    }
+
+    public static function add(array $data, $arg)
+    {
+        $result = [];
+
+        foreach ($data as $item)
+            $result[] = $item + $arg;
+
+        return $result;
+    }
+
+    public static function sub(array $data, $arg)
+    {
+        $result = [];
+
+        foreach ($data as $item)
+            $result[] = $item - $arg;
+
+        return $result;
+    }
+
+    public static function pow(array $data, $arg)
+    {
+        $result = [];
+
+        foreach ($data as $item)
+            $result[] = $item ** $arg;
+
+        return $result;
+    }
+
+    public static function mod(array $data, $arg)
+    {
+        $result = [];
+
+        foreach ($data as $item)
+            $result[] = $item % $arg;
 
         return $result;
     }
