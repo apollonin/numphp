@@ -20,6 +20,13 @@ Contributions as highly appreciated.
   * b_and - logical AND
   * b_or - logical OR
 * set items values according to conditions. Conditions are the same as for selection.
+* apply math operations to whole array
+  * mul - multiply
+  * div = divide
+  * add - add 
+  * sub - subtract
+  * pow - power
+  * mod - mod
 
 np_array is also has classical array behaviour. So you are able to iterate through it as usual.
 
@@ -104,8 +111,8 @@ foreach ($list as $item) {
 **set items by indexes**
 
 ```
-$newList = clone($list);
-$newList[[2,3]] = 9999;
+$result = clone($list);
+$result[[2,3]] = 9999;
 
 // result
 Array
@@ -122,8 +129,8 @@ Array
 **set items by conditions**
 
 ```
-$newList = clone($list);
-$newList[$newList->gte(30)] = 9999;
+$result = clone($list);
+$result[$result->gte(30)] = 9999;
 
 // result
 Array
@@ -142,8 +149,8 @@ Array
 Of course, you may add new items as usual
 
 ```
-$newList = clone($list);
-$newList[] = 9999;
+$result = clone($list);
+$result[] = 9999;
 
 // result 
 Array
@@ -156,4 +163,24 @@ Array
     [5] => 34
     [6] => 9999
 )
+```
+
+### Math operations
+
+You are able to apply certain math operation to whole array. It will apply to each element.
+
+```
+$result = $list->add(100);
+
+// result 
+Array
+(
+    [0] => 118
+    [1] => 125
+    [2] => 126
+    [3] => 129
+    [4] => 130
+    [5] => 134
+)
+
 ```

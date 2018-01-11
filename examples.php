@@ -36,3 +36,9 @@ echo 'res5: ' . $res5;
 $res6 = clone($list);
 $res6[$res6->gte(30)] = 9999;
 echo 'res6: ' . $res6;
+
+$res7 = $list->mul(5);
+echo 'res7: ' . $res7;
+
+$res8 = $list[$list->gt(29)]->pow(2);
+echo 'res8: ' . $res8;
