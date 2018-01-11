@@ -83,7 +83,7 @@ class np_array implements \ArrayAccess, \Iterator
         }
         else
         {
-            return isset($this->data[$offset]) ? $this->data[$offset] : null;
+            return $this->data[$offset];
         }
     }
 
