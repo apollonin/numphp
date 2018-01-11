@@ -92,9 +92,13 @@ class np_array implements \ArrayAccess, \Iterator
 
             return new self($result);
         }
-        else
+        elseif(is_numeric($offset))
         {
             return $this->data[$offset];
+        }
+        else
+        {
+            return $this[$this->gt(30)];
         }
     }
 
