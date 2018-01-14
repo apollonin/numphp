@@ -44,4 +44,5 @@ $res8 = $list[$list->gt(29)]->pow(2);
 echo 'res8: ' . $res8;
 
 
-echo 'res9: ' . $list['> 30'];
+echo 'res9: ' . $list[$list['< 30']];
+

@@ -3,6 +3,7 @@
 namespace numphp;
 
 use numphp\operator;
+use numphp\StringIndexator;
 
 class np_array implements \ArrayAccess, \Iterator
 {
@@ -98,7 +99,10 @@ class np_array implements \ArrayAccess, \Iterator
         }
         else
         {
-            return $this[$this->gt(30)];
+            $stringIndexator = new StringIndexator($offset);
+            $callee = $stringIndexator->convertToMethod();
+
+            return $this->{$callee['method']}($callee['arg']);
         }
     }
 

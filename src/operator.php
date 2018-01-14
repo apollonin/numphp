@@ -13,6 +13,15 @@ abstract class operator
         'neq'
     ];
 
+    public static $comparations2Symbol = [
+        '==' => 'eq',
+        '>'  => 'gt',
+        '>=' => 'gte',
+        '<'  => 'lt',
+        '<=' => 'lte',
+        '!=' => 'neq',
+    ];
+
     public static $operators = [
         'mul',
         'div',
