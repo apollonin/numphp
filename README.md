@@ -76,6 +76,13 @@ Array
 )
 ```
 
+You may also access index by string representations of comparison. 
+
+```
+// gives the same result as above
+$result = $list[$list['> 25']];
+```
+
 
 **get items by conditions**
 

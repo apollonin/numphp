@@ -37,4 +37,11 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
         $res = $this->list[operator::b_and($this->list->gt(25), $this->list->lt(30))];
         $this->assertEquals($res->getData(), [26]);
     }
+
+    public function testStringComparisonIndex()
+    {
+        $res = $this->list[$this->list['> 25']];
+
+        $this->assertEquals($res->getData(), [26, 30, 34]);
+    }
 }
