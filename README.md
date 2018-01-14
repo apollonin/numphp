@@ -1,5 +1,7 @@
 # Numphp
 
+[![Build Status](https://travis-ci.org/apollonin/numphp.svg?branch=master)](https://travis-ci.org/apollonin/numphp)
+
 Numphp - library for numbers manipulation. If you have array of numbers, numphp gives you an ability to do wide range of useful operations.
 
 Contributions as highly appreciated.
