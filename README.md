@@ -13,7 +13,9 @@ Contributions as highly appreciated.
 
 ### Via composer
 
-`composer require apollonin/numphp`
+```
+composer require apollonin/numphp
+```
 
 
 ## Available features
