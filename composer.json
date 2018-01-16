@@ -2,7 +2,7 @@
   "name": "apollonin/numphp",
   "type": "library",
   "description": "Library for numbers manipulation.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "keywords": [
     "numbers",
     "array",

@@ -9,6 +9,13 @@ Numphp - library for numbers manipulation. If you have array of numbers, numphp 
 
 Contributions as highly appreciated.
 
+## Installation
+
+### Via composer
+
+`composer require apollonin/numphp`
+
+
 ## Available features
 
 
