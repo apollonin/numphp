@@ -70,11 +70,7 @@ $list = new np_array([18, 25, 26, 30, 34]);
 $result = $list[[2,3]];
 
 // result
-Array
-(
-    [0] => 26
-    [1] => 29
-)
+[26, 29]
 ```
 
 To get item as single value - pass index as single value as well
@@ -92,13 +88,7 @@ $result = $list[1];
 $result = $list[$list->gt(25)];
 
 // result
-Array
-(
-    [0] => 26
-    [1] => 29
-    [2] => 30
-    [3] => 34
-)
+[26, 29, 30, 34]
 ```
 
 You may also access index by string representations of comparison. 
@@ -117,11 +107,7 @@ $result = $list[$list['> 25']];
 $resuilt = $list[operator::b_and($list->gt(25), $list->lt(30))];
 
 // result
-Array
-(
-    [0] => 26
-    [1] => 29
-)
+[26, 29]
 ```
 
 **array-like behaviour**
@@ -147,15 +133,7 @@ $result = clone($list);
 $result[[2,3]] = 9999;
 
 // result
-Array
-(
-    [0] => 18
-    [1] => 25
-    [2] => 9999
-    [3] => 9999
-    [4] => 30
-    [5] => 34
-)
+[18, 25, 9999, 9999, 30, 34]
 ```
 
 **set items by conditions**
@@ -165,15 +143,7 @@ $result = clone($list);
 $result[$result->gte(30)] = 9999;
 
 // result
-Array
-(
-    [0] => 18
-    [1] => 25
-    [2] => 26
-    [3] => 29
-    [4] => 9999
-    [5] => 9999
-)
+[18, 25, 26, 29, 9999, 9999]
 ```
 
 **adding new items**
@@ -185,16 +155,7 @@ $result = clone($list);
 $result[] = 9999;
 
 // result 
-Array
-(
-    [0] => 18
-    [1] => 25
-    [2] => 26
-    [3] => 29
-    [4] => 30
-    [5] => 34
-    [6] => 9999
-)
+[18, 25, 26, 29, 30, 34, 9999]
 ```
 
 ### Math operations
@@ -205,14 +166,28 @@ You are able to apply certain math operation to whole array. It will apply to ea
 $result = $list->add(100);
 
 // result 
-Array
-(
-    [0] => 118
-    [1] => 125
-    [2] => 126
-    [3] => 129
-    [4] => 130
-    [5] => 134
-)
+[118, 125, 126, 129, 130, 134]
+```
 
+
+
+### Random module
+
+**create array with random floats**
+
+```
+$result = Random::rand(5)
+
+// result
+[0.64488127438579, 0.21702189986455, 0.96931800524207, 0.78197341448719, 0.89214772632911]
+
+```
+
+**array with random integers**
+
+```
+$result = Random::randint(5, 15, 10);
+
+// result
+[13, 9, 12, 14, 6, 15, 8, 9, 5, 13]
 ```

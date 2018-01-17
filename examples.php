@@ -57,5 +57,6 @@ echo 'random count 0: ' . "\n" . Random::rand() . "\n\n";
 
 echo 'random count 5: ' . "\n" . Random::rand(5) . "\n\n";
 
-echo 'random ints within range 5-15: ' . "\n" . Random::randint(5, 15, 10) . "\n\n";
+echo 'random 10 ints within range 5-15: ' . "\n" . Random::randint(5, 15, 10) . "\n\n";
+
 
