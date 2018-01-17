@@ -9,7 +9,7 @@ abstract class Random
     public static function rand($size=null)
     {
         if ($size < 0)
-            throw new Exception("size value must be greater than 0");
+            throw new \Exception("size value must be greater than 0");
             
         if (!$size)
             return static::getRandFloat();
@@ -25,7 +25,7 @@ abstract class Random
     public static function randint($low, $high=0, $size=null)
     {
         if ($size < 0)
-            throw new Exception("size value must be greater than 0");
+            throw new \Exception("size value must be greater than 0");
 
         if (!$high)
         {

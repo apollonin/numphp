@@ -56,4 +56,11 @@ class RandomTest extends \PHPUnit_Framework_TestCase
             $this->assertLessThanOrEqual(15, $item);
         }
     }
+
+    public function testExecptionWhileInvalidSize()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = Random::randint(10, 15, -5);
+    }
 }
