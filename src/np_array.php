@@ -36,7 +36,7 @@ class np_array implements \ArrayAccess, \Iterator
 
     public function __toString()
     {
-        return print_r($this->data, true);
+        return sprintf("[%s]", implode(", ", $this->data));
     }
 
     public function getData()

@@ -18,34 +18,34 @@ foreach ($list as $item) {
 echo "\n\n";
 
 $res1 = $list[operator::b_and($list->gt(25), $list->lt(30))];
-echo 'res1: ' . $res1;
+echo '>= 25 and < 30: ' . "\n" . $res1 . "\n\n";
 
 
 $res2 = $res1[$res1->gt(27)];
-echo 'res2: ' . $res2;
+echo 'previous > 27: ' . "\n" . $res2 . "\n\n";
 
-echo 'res3: ' . $list[2] . "\n";
+echo 'index 2: ' . "\n" . $list[2] . "\n\n";
 
 $res4 = $list[$list->eq(26)];
-echo 'res4: ' . $res4;
+echo 'equal 26: ' . "\n" . $res4 . "\n\n";
 
 
 $res5 = clone($list);
 $res5[[2,3]] = 9999;
-echo 'res5: ' . $res5;
+echo 'set indexes 2 and 3 to 9999: ' . "\n" . $res5 . "\n\n";
 
 $res6 = clone($list);
 $res6[$res6->gte(30)] = 9999;
-echo 'res6: ' . $res6;
+echo 'set elements >= 30 to 9999: ' . "\n" . $res6 . "\n\n";
 
 $res7 = $list->mul(5);
-echo 'res7: ' . $res7;
+echo 'multiply all to 5: ' . "\n" . $res7 . "\n\n";
 
 $res8 = $list[$list->gt(29)]->pow(2);
-echo 'res8: ' . $res8;
+echo 'power > 29 by 2: ' . "\n" . $res8 . "\n\n";
 
 
-echo 'res9: ' . $list[$list['< 30']];
+echo 'short indexing < 30: ' . "\n" . $list[$list['< 30']] . "\n\n";
 
 
 
@@ -53,7 +53,9 @@ echo 'res9: ' . $list[$list['< 30']];
 *  Random
 **/
 
-echo 'random count 0: ' . Random::rand() . "\n";
+echo 'random count 0: ' . "\n" . Random::rand() . "\n\n";
 
-echo 'random count 5: ' . Random::rand(5);
+echo 'random count 5: ' . "\n" . Random::rand(5) . "\n\n";
+
+echo 'random ints within range 5-15: ' . "\n" . Random::randint(5, 15, 10) . "\n\n";
 
