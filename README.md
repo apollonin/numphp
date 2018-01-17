@@ -20,6 +20,7 @@ composer require apollonin/numphp
 
 ## Available features
 
+**arrays**
 
 * get item by index
 * get items by array of indexes
@@ -43,6 +44,15 @@ composer require apollonin/numphp
   * mod - mod
 
 np_array is also has classical array behaviour. So you are able to iterate through it as usual.
+
+**random module**
+
+Library also provide convenient way to generate new np_arrays and populate them with random values. Available methods are
+
+* Random::rand($size=null)
+* Random::randint($low, $high=0, $size=null)
+
+If `size` parameter is given, returns np_array with appropriate elements. Otherwise - return single random value.
 
 ## Usage examples
 

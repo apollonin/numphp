@@ -6,7 +6,7 @@ use numphp\np_array;
 
 abstract class Random
 {
-    public static function rand($size = 0)
+    public static function rand($size=null)
     {
         if ($size < 0)
             throw new Exception("size value must be greater than 0");
@@ -22,11 +22,11 @@ abstract class Random
         return new np_array($list);
     }
 
-    public static function randint($low, $high = 0, $size = 0)
+    public static function randint($low, $high=0, $size=null)
     {
         if ($size < 0)
             throw new Exception("size value must be greater than 0");
-        
+
         if (!$high)
         {
             $size = $high;
