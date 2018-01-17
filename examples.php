@@ -4,6 +4,7 @@ require_once realpath(__DIR__ . '/vendor') . '/autoload.php';
 
 use numphp\np_array;
 use numphp\operator;
+use numphp\Random\Random;
 
 $list = new np_array([18, 25, 26, 29, 30, 34]);
 
@@ -45,4 +46,14 @@ echo 'res8: ' . $res8;
 
 
 echo 'res9: ' . $list[$list['< 30']];
+
+
+
+/** 
+*  Random
+**/
+
+echo 'random count 0: ' . Random::rand() . "\n";
+
+echo 'random count 5: ' . Random::rand(5);
 
