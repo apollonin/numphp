@@ -2,6 +2,8 @@
 
 namespace numphp;
 
+use numphp\np_array;
+
 abstract class operator
 {
     public static $comparations = [
@@ -36,74 +38,68 @@ abstract class operator
         'b_or'
     ];
 
-    public static function eq($data, $arg)
+    public static function eq(np_array $data, $arg)
     {
         $result = [];
 
-        array_walk($data, function($item) use (&$result, $arg){
+        foreach ($data as $item)
             $result[] = $item == $arg;
-        });
 
         return $result;
     }
 
-    public static function gt(array $data, $arg)
+    public static function gt(np_array $data, $arg)
     {
         $result = [];
 
-        array_walk($data, function($item) use (&$result, $arg){
+        foreach ($data as $item)
             $result[] = $item > $arg;
-        });
 
         return $result;
     }
 
-    public static function gte(array $data, $arg)
+    public static function gte(np_array $data, $arg)
     {
         $result = [];
 
-        array_walk($data, function($item) use (&$result, $arg){
+        foreach ($data as $item)
             $result[] = $item >= $arg;
-        });
 
         return $result;
     }
 
-    public static function lt(array $data, $arg)
+    public static function lt(np_array $data, $arg)
     {
         $result = [];
 
-        array_walk($data, function($item) use (&$result, $arg){
+        foreach ($data as $item)
             $result[] = $item < $arg;
-        });
 
         return $result;
     }
 
-    public static function lte(array $data, $arg)
+    public static function lte(np_array $data, $arg)
     {
         $result = [];
 
-        array_walk($data, function($item) use (&$result, $arg){
+        foreach ($data as $item)
             $result[] = $item <= $arg;
-        });
 
         return $result;
     }
 
-    public static function neq(array $data, $arg)
+    public static function neq(np_array $data, $arg)
     {
         $result = [];
 
-        array_walk($data, function($item) use (&$result, $arg){
+        foreach ($data as $item)
             $result[] = $item != $arg;
-        });
 
         return $result;
     }
 
 
-    public static function mul(array $data, $arg)
+    public static function mul(np_array $data, $arg)
     {
         $result = [];
 
@@ -113,7 +109,7 @@ abstract class operator
         return $result;
     }
 
-    public static function div(array $data, $arg)
+    public static function div(np_array $data, $arg)
     {
         $result = [];
 
@@ -123,7 +119,7 @@ abstract class operator
         return $result;
     }
 
-    public static function add(array $data, $arg)
+    public static function add(np_array $data, $arg)
     {
         $result = [];
 
@@ -133,7 +129,7 @@ abstract class operator
         return $result;
     }
 
-    public static function sub(array $data, $arg)
+    public static function sub(np_array $data, $arg)
     {
         $result = [];
 
@@ -143,7 +139,7 @@ abstract class operator
         return $result;
     }
 
-    public static function pow(array $data, $arg)
+    public static function pow(np_array $data, $arg)
     {
         $result = [];
 
@@ -153,7 +149,7 @@ abstract class operator
         return $result;
     }
 
-    public static function mod(array $data, $arg)
+    public static function mod(np_array $data, $arg)
     {
         $result = [];
 
@@ -164,26 +160,22 @@ abstract class operator
     }
 
 
-    public static function b_and(array $a1, array $a2)
+    public static function b_and(np_array $a1, np_array $a2)
     {
         $result = [];
 
         foreach ($a1 as $key => $value)
-        {
             $result[] = $value && $a2[$key];
-        }
 
         return $result;
     }
 
-    public static function b_or(array $a1, array $a2)
+    public static function b_or(np_array $a1, np_array $a2)
     {
         $result = [];
 
         foreach ($a1 as $key => $value)
-        {
             $result[] = $value || $a2[$key];
-        }
 
         return $result;
     }    
