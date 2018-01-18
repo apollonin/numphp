@@ -57,7 +57,7 @@ class RandomTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    public function testExecptionWhileInvalidSize()
+    public function testExceptionWhileInvalidSize()
     {
         $this->expectException(\Exception::class);
 
