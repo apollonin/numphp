@@ -23,5 +23,23 @@ abstract class Generator
             
         return new np_array(array_fill(0, $size, $fill_value));
     }
+
+    public static function arange($start, $stop, $step=1)
+    {
+        if (!$stop)
+        {
+            $stop = $start;
+            $start = 0;
+        }
+
+        $result = [];
+
+        for ($i=$start; $i < $stop; $i+= $step)
+        {
+            $result[] = $i;
+        }
+
+        return new np_array($result);
+    }
 }
 

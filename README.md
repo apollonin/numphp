@@ -62,6 +62,7 @@ For quick stub array creation you may use convenient predefined methods
 * ones - creates array full of 1
 * zeros - creates array full of 0 
 * full- creates array full of provided fill_value
+* arange - creates evenly spaced values within a given interval.
 
 
 ## Usage examples
@@ -228,4 +229,15 @@ $result = Generator::full(5, 9999);
 
 //result
 [9999, 9999, 9999, 9999, 9999]
+```
+
+**create array within a range and given interval**
+
+```
+use numphp\Generator\Generator;
+
+$result = Generator::arange(1, 15, 2);
+
+//result
+[1, 3, 5, 7, 9, 11, 13]
 ```

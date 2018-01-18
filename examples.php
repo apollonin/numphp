@@ -66,3 +66,5 @@ echo 'random 10 ints within range 5-15: ' . "\n" . Random::randint(5, 15, 10) . 
 echo 'zeros array with size of 5: ' . "\n" . Generator::zeros(5) . "\n\n";
 echo 'ones array with size of 5: ' . "\n" . Generator::ones(5) . "\n\n";
 
+echo 'arange: ' . "\n" . Generator::arange(1, 15) . "\n\n";
+
