@@ -6,7 +6,7 @@
 [![License](https://poser.pugx.org/apollonin/numphp/license)](https://packagist.org/packages/apollonin/numphp)
 [![codecov](https://codecov.io/gh/apollonin/numphp/branch/master/graph/badge.svg)](https://codecov.io/gh/apollonin/numphp)
 
-Numphp - library for numbers manipulation. If you have array of numbers, numphp gives you an ability to do wide range of useful operations.
+Numphp is a library for manipulating numbers. If you have array of numbers, numphp gives you an ability to do wide range of useful operations.
 
 Contributions as highly appreciated.
 
