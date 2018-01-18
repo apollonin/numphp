@@ -19,7 +19,7 @@ class RandomTest extends \PHPUnit_Framework_TestCase
         $res = Random::rand(5);
 
         $this->assertInstanceOf('numphp\np_array', $res);
-        $this->assertEquals(count($res->getData()), 5);
+        $this->assertEquals(count($res), 5);
 
         foreach ($res as $item)
         {
@@ -48,7 +48,7 @@ class RandomTest extends \PHPUnit_Framework_TestCase
         $res = Random::randint(10, 15, 5);
 
         $this->assertInstanceOf('numphp\np_array', $res);
-        $this->assertEquals(count($res->getData()), 5);
+        $this->assertEquals(count($res), 5);
 
         foreach ($res as $item)
         {

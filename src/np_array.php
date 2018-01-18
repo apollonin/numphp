@@ -5,7 +5,7 @@ namespace numphp;
 use numphp\operator;
 use numphp\StringIndexator;
 
-class np_array implements \ArrayAccess, \Iterator
+class np_array implements \ArrayAccess, \Iterator, \Countable
 {
     private $data;
     private $position = 0;
@@ -158,5 +158,16 @@ class np_array implements \ArrayAccess, \Iterator
     {
         return $this->offsetExists($this->position);
     }
+
+
+    /**
+     * Countable methods
+     */
+    
+    public function count() 
+    { 
+        return count($this->data);
+    } 
+     
 
 }
