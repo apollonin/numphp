@@ -19,14 +19,10 @@ class np_array implements \ArrayAccess, \Iterator
     public function __call($method, $args)
     {
         // comparations call: eq, gt. gte, lt, etc...
-        if (in_array($method, operator::$comparations))
+        // math operations call: add, sub, div, etc...
+        if (in_array($method, operator::$comparations) || in_array($method, operator::$operators))
         {
-            array_unshift($args, $this->data);
-            return forward_static_call_array(['numphp\operator', $method], $args);
-        }
-        elseif (in_array($method, operator::$operators))
-        {
-            array_unshift($args, $this->data);
+            array_unshift($args, $this);
             return new self(forward_static_call_array(['numphp\operator', $method], $args));
         }
         else
@@ -56,7 +52,7 @@ class np_array implements \ArrayAccess, \Iterator
         } 
         else 
         {
-            if (is_array($offset))
+            if (is_array($offset) || $offset instanceof $this)
             {
                 foreach ($this->getIndexes($offset) as $index)
                 {
@@ -82,7 +78,7 @@ class np_array implements \ArrayAccess, \Iterator
 
     public function offsetGet($offset) 
     {
-        if (is_array($offset))
+        if (is_array($offset) || $offset instanceof $this)
         {
             $result = [];
 
@@ -108,10 +104,10 @@ class np_array implements \ArrayAccess, \Iterator
 
     /**
      * Get array indexes according to conditions
-     * @param  array  $offset could be array of indexes or array of booleans
+     * @param  mixed  $offset could be array of indexes or array of booleans
      * @return array         
      */
-    private function getIndexes(array $offset)
+    private function getIndexes($offset)
     {
         $indexes = [];
 
