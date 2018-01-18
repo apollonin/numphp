@@ -5,6 +5,7 @@ require_once realpath(__DIR__ . '/vendor') . '/autoload.php';
 use numphp\np_array;
 use numphp\operator;
 use numphp\Random\Random;
+use numphp\Generator\Generator;
 
 $list = new np_array([18, 25, 26, 29, 30, 34]);
 
@@ -59,4 +60,9 @@ echo 'random count 5: ' . "\n" . Random::rand(5) . "\n\n";
 
 echo 'random 10 ints within range 5-15: ' . "\n" . Random::randint(5, 15, 10) . "\n\n";
 
+
+/** Generator **/
+
+echo 'zeros array with size of 5: ' . "\n" . Generator::zeros(5) . "\n\n";
+echo 'ones array with size of 5: ' . "\n" . Generator::ones(5) . "\n\n";
 

@@ -38,7 +38,7 @@ composer require apollonin/numphp
 * set items values according to conditions. Conditions are the same as for selection.
 * apply math operations to whole array
   * mul - multiply
-  * div = divide
+  * div - divide
   * add - add 
   * sub - subtract
   * pow - power
@@ -50,10 +50,19 @@ np_array is also has classical array behaviour. So you are able to iterate throu
 
 Library also provide convenient way to generate new np_arrays and populate them with random values. Available methods are
 
-* Random::rand($size=null)
-* Random::randint($low, $high=0, $size=null)
+* rand
+* randint
 
 If `size` parameter is given, returns np_array with appropriate elements. Otherwise - return single random value.
+
+**generators**
+
+For quick stub array creation you may use convenient predefined methods
+
+* ones - creates array full of 1
+* zeros - creates array full of 0 
+* full- creates array full of provided fill_value
+
 
 ## Usage examples
 
@@ -176,6 +185,8 @@ $result = $list->add(100);
 **create array with random floats**
 
 ```
+use numphp\Random\Random;
+
 $result = Random::rand(5)
 
 // result
@@ -186,8 +197,35 @@ $result = Random::rand(5)
 **array with random integers**
 
 ```
+use numphp\Random\Random;
+
 $result = Random::randint(5, 15, 10);
 
 // result
 [13, 9, 12, 14, 6, 15, 8, 9, 5, 13]
+```
+
+
+### Generators module
+
+**create array full of zeros, ones or fill_value**
+
+```
+use numphp\Generator\Generator;
+
+$result = Generator::zeros(5);
+
+//result
+[0, 0, 0, 0, 0]
+
+
+$result = Generator::ones(5);
+
+//result
+[1, 1, 1, 1, 1]
+
+$result = Generator::full(5, 9999);
+
+//result
+[9999, 9999, 9999, 9999, 9999]
 ```
