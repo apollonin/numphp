@@ -23,7 +23,7 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res = clone($this->list);
         $res[] = 999;
 
-        $this->assertEquals($res->getData(), [18, 25, 26, 30, 34, 999]);
+        $this->assertEquals((array) $res, [18, 25, 26, 30, 34, 999]);
     }
 
     public function testChangeItemByIndex()
@@ -31,7 +31,7 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res = clone($this->list);
         $res[2] = 999;
 
-        $this->assertEquals($res->getData(), [18, 25, 999, 30, 34]);
+        $this->assertEquals((array) $res, [18, 25, 999, 30, 34]);
     }
 
     public function testChangeItemByCondition()
@@ -39,7 +39,7 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res = clone($this->list);
         $res[$res->lt(26)] = 999;
 
-        $this->assertEquals($res->getData(), [999, 999, 26, 30, 34]);
+        $this->assertEquals((array) $res, [999, 999, 26, 30, 34]);
     }
 
     public function testAddItemAndChangeAll()
@@ -48,7 +48,7 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res[] = 10;
         $res[$res->lt(999)] = 999;
 
-        $this->assertEquals($res->getData(), [999, 999, 999, 999, 999, 999]);
+        $this->assertEquals((array) $res, [999, 999, 999, 999, 999, 999]);
     }
     
 }

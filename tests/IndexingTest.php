@@ -29,14 +29,14 @@ class IndexingTest extends \PHPUnit_Framework_TestCase
     {
         $res = $this->list[[3,4]];
 
-        $this->assertEquals($res->getData(), [30, 34]);
+        $this->assertEquals((array) $res, [30, 34]);
     }
 
     public function testConditionIndex()
     {
         $res = $this->list[$this->list->gte(25)];
 
-        $this->assertEquals($res->getData(), [25, 26, 30, 34]);
+        $this->assertEquals((array) $res, [25, 26, 30, 34]);
     }
 
     

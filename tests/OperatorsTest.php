@@ -22,20 +22,20 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
     {
         $res = $this->list->add(5);
 
-        $this->assertEquals($res->getData(), [23, 30, 31, 35, 39]);
+        $this->assertEquals((array) $res, [23, 30, 31, 35, 39]);
     }
 
     public function testOperatorSub()
     {
         $res = $this->list->sub(10);
 
-        $this->assertEquals($res->getData(), [8, 15, 16, 20, 24]);
+        $this->assertEquals((array) $res, [8, 15, 16, 20, 24]);
     }
 
     public function testOperatorPow()
     {
         $res = $this->list->pow(2);
 
-        $this->assertEquals($res->getData(), [324, 625, 676, 900, 1156]);
+        $this->assertEquals((array) $res, [324, 625, 676, 900, 1156]);
     }
 }
