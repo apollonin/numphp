@@ -22,26 +22,26 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
     {
         $res = $this->list[$this->list->gt(25)];
 
-        $this->assertEquals($res->getData(), [26, 30, 34]);
+        $this->assertEquals((array) $res, [26, 30, 34]);
     }
 
     public function testSimpleComparationEq()
     {
         $res = $this->list[$this->list->eq(25)];
 
-        $this->assertEquals($res->getData(), [25]);
+        $this->assertEquals((array) $res, [25]);
     }
 
     public function testBitwiseComparations()
     {
         $res = $this->list[operator::b_and($this->list->gt(25), $this->list->lt(30))];
-        $this->assertEquals($res->getData(), [26]);
+        $this->assertEquals((array) $res, [26]);
     }
 
     public function testStringComparisonIndex()
     {
         $res = $this->list[$this->list['> 25']];
 
-        $this->assertEquals($res->getData(), [26, 30, 34]);
+        $this->assertEquals((array) $res, [26, 30, 34]);
     }
 }

@@ -60,6 +60,6 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('numphp\np_array', $res);
         $this->assertEquals(count($res), 7);
 
-        $this->assertEquals($res->getData(), [1, 3, 5, 7, 9, 11, 13]);
+        $this->assertEquals((array) $res, [1, 3, 5, 7, 9, 11, 13]);
     }
 }
