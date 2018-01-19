@@ -5,7 +5,6 @@ namespace numphp;
 use numphp\operator;
 use numphp\StringIndexator;
 
-#class np_array implements \ArrayAccess, \Iterator, \Countable
 class np_array extends \ArrayObject
 {
     public function __call($method, $args)
