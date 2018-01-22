@@ -24,7 +24,7 @@ abstract class Generator
         return new np_array(array_fill(0, $size, $fill_value));
     }
 
-    public static function arange($start, $stop, $step=1)
+    public static function arange($start, $stop=0, $step=1)
     {
         if (!$stop)
         {

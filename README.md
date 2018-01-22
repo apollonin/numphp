@@ -227,6 +227,24 @@ $result = $list->add(100);
 [118, 125, 126, 129, 130, 134]
 ```
 
+You may also perform math operation under two np_arrays
+
+```
+$result = $list->add(new np_array([1, 2, 3, 4, 5]))
+
+//result
+[19, 27, 29, 34, 39]
+```
+
+Or event np_array and normal array!
+
+```
+$result = $list->add([1, 2, 3, 4, 5]);
+
+//result
+[19, 27, 29, 34, 39]
+```
+
 
 
 ### Random module
