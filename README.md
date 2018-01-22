@@ -165,10 +165,13 @@ $result = $list['1:'];
 ``` 
 
 You may skip even `start` value, than will be considered as 0 in this case
+
+```
 $result = $list[':'];
 
 //result
 [18, 25, 26, 29, 30, 34]
+```
 
 
 ### Set items values
