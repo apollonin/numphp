@@ -164,13 +164,22 @@ $result = $list['1:'];
 [25, 26, 29, 30, 34]
 ``` 
 
-You may skip even `start` value, than will be considered as 0 in this case
+You may even skip `start` value, than will be considered as 0 in this case
 
 ```
 $result = $list[':'];
 
 //result
 [18, 25, 26, 29, 30, 34]
+```
+
+Negative `start` or `stop` means indexes count from the end of array
+
+```
+$result = $list['-3:5'];
+
+//result
+[29, 30]
 ```
 
 

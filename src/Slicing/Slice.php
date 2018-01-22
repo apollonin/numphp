@@ -23,8 +23,17 @@ abstract class Slice
 
         list($start, $stop, $step) = [(int) $matches[1], (int) $matches[2], (int) $matches[3]];
 
-        $stop = $stop?:count($data);
-        $step = $step?:1;
+        if (!$start)
+            $start = 0;
+        elseif($start < 0)
+            $start = count($data) + $start;
+
+        if (!$stop)
+            $stop = count($data);
+        elseif ($stop <= 0)
+            $stop = count($data) + $stop;
+
+        $step = $step ? : 1;
 
         $result = [];
 
