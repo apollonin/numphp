@@ -21,8 +21,9 @@ abstract class Slice
 
         static::matchPattern($str, $matches);
 
-        list($start, $stop, $step) = [$matches[1], $matches[2], $matches[3]];
+        list($start, $stop, $step) = [(int) $matches[1], (int) $matches[2], (int) $matches[3]];
 
+        $stop = $stop?:count($data);
         $step = $step?:1;
 
         $result = [];
