@@ -59,6 +59,9 @@ echo 'multiply all to 5: ' . "\n" . $res7 . "\n\n";
 $res8 = $list[$list->gt(29)]->pow(2);
 echo 'power > 29 by 2: ' . "\n" . $res8 . "\n\n";
 
+echo 'add 5' . "\n" . $list->add(5) . "\n\n";
+echo 'add vector [1, 2, 3, 4, 5, 6]' . "\n" . ($list->add(Generator::arange(6))) . "\n\n";
+
 
 
 /** 
