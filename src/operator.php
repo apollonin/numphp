@@ -188,17 +188,29 @@ abstract class operator
      */
     private static function checkArg(np_array $data, &$arg, &$isSingle=false)
     {
+        $arg = self::formatArg($arg);
+            
+        if (count($arg) != 1 && count($arg) != count($data))
+            throw new \Exception("Can not perform operation between vectors with shapes " . count($data) . " and " . count($arg));
+            
+        $isSingle = (count($arg) == 1);
+    }
+
+    /**
+     * Convert arg to np_array
+     * @param  mixed $arg 
+     * @return np_array      
+     */
+    private static function formatArg($arg)
+    {
         if (is_numeric($arg))
             $arg = new np_array([$arg]);
         elseif (is_array($arg))
             $arg = new np_array($arg);
         elseif(is_object($arg) && !$arg instanceof np_array)
             throw new \Exception("Operators accept only numbers, array or np_arrays as second argument");
-            
-        if (count($arg) != 1 && count($arg) != count($data))
-            throw new \Exception("Can not perform operation between vectors with shapes " . count($data) . " and " . count($arg));
-            
-        $isSingle = (count($arg) == 1);
+
+        return $arg;
     }
 
 
