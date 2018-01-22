@@ -68,3 +68,10 @@ echo 'ones array with size of 5: ' . "\n" . Generator::ones(5) . "\n\n";
 
 echo 'arange: ' . "\n" . Generator::arange(1, 15) . "\n\n";
 
+
+
+
+/** Slicing **/
+
+echo 'slicing [1:5]: ' . "\n" . $list['1:5'] . "\n\n";
+echo 'slicing [1:5:2]: ' . "\n" . $list['1:5:2'] . "\n\n";

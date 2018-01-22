@@ -45,6 +45,7 @@ composer require apollonin/numphp
   * sub - subtract
   * pow - power
   * mod - mod
+* Get slice of array
 
 np_array is also has classical array behaviour. So you are able to iterate through it as usual.
 
@@ -69,7 +70,7 @@ For quick stub array creation you may use convenient predefined methods
 
 ## Usage examples
 
-### Items selection
+### Indexing
 
 **create new array**
 ```
@@ -135,6 +136,33 @@ foreach ($list as $item) {
 18 25 26 29 30 34
 ```
 
+
+### Slicing
+
+You may get slices of your np_array in a very convenient way. Just pass string formatted like `start:[stop][:step]` as index and you'll get result.
+
+```
+$result = $list['1:3'];
+
+//result
+[25, 26]
+```
+
+```
+$result = $list['1:5:2'];
+
+//result
+[25, 30]
+```
+
+You can even skip `stop` and `step` values, which means: get all items from `start` to the end of array.
+
+```
+$result = $list['1:'];
+
+//result
+[25, 26, 29, 30, 34]
+``` 
 
 ### Set items values
 
