@@ -3,6 +3,7 @@
 namespace numphp;
 
 use numphp\operator;
+use numphp\Slicing\Slice;
 use numphp\StringIndexator;
 
 class np_array extends \ArrayObject
@@ -61,6 +62,10 @@ class np_array extends \ArrayObject
         elseif(is_numeric($offset))
         {
             return parent::offsetGet($offset);
+        }
+        elseif(Slice::isValidFormat($offset))
+        {
+            return Slice::slice($this, $offset);
         }
         else
         {
