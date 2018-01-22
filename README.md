@@ -146,9 +146,8 @@ $result = $list['1:3'];
 
 //result
 [25, 26]
-```
 
-```
+
 $result = $list['1:5:2'];
 
 //result
