@@ -18,6 +18,10 @@ foreach ($list as $item) {
 
 echo "\n\n";
 
+/**
+ * Indexing
+ */
+
 $res1 = $list[operator::b_and($list->gt(25), $list->lt(30))];
 echo '>= 25 and < 30: ' . "\n" . $res1 . "\n\n";
 
@@ -30,6 +34,11 @@ echo 'index 2: ' . "\n" . $list[2] . "\n\n";
 $res4 = $list[$list->eq(26)];
 echo 'equal 26: ' . "\n" . $res4 . "\n\n";
 
+echo 'short indexing < 30: ' . "\n" . $list[$list['< 30']] . "\n\n";
+
+/**
+ * Set items
+ */
 
 $res5 = clone($list);
 $res5[[2,3]] = 9999;
@@ -39,14 +48,16 @@ $res6 = clone($list);
 $res6[$res6->gte(30)] = 9999;
 echo 'set elements >= 30 to 9999: ' . "\n" . $res6 . "\n\n";
 
+
+/**
+ * Math operations
+ */
+
 $res7 = $list->mul(5);
 echo 'multiply all to 5: ' . "\n" . $res7 . "\n\n";
 
 $res8 = $list[$list->gt(29)]->pow(2);
 echo 'power > 29 by 2: ' . "\n" . $res8 . "\n\n";
-
-
-echo 'short indexing < 30: ' . "\n" . $list[$list['< 30']] . "\n\n";
 
 
 

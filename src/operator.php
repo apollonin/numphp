@@ -25,18 +25,22 @@ abstract class operator
     ];
 
     public static $operators = [
-        'mul',
-        'div',
         'add',
-        'sub',
+        'div',
+        'mod',
+        'mul',
         'pow',
-        'mod'
+        'sub',
     ];
 
     public static $bitwise_operators = [
         'b_and',
         'b_or'
     ];
+
+    /**
+     * Comparison module
+     */
 
     public static function eq(np_array $data, $arg)
     {
@@ -99,12 +103,16 @@ abstract class operator
     }
 
 
-    public static function mul(np_array $data, $arg)
+    /**
+     * Math module
+     */
+
+    public static function add(np_array $data, $arg)
     {
         $result = [];
 
         foreach ($data as $item)
-            $result[] = $item * $arg;
+            $result[] = $item + $arg;
 
         return $result;
     }
@@ -119,22 +127,22 @@ abstract class operator
         return $result;
     }
 
-    public static function add(np_array $data, $arg)
+    public static function mod(np_array $data, $arg)
     {
         $result = [];
 
         foreach ($data as $item)
-            $result[] = $item + $arg;
+            $result[] = $item % $arg;
 
         return $result;
     }
 
-    public static function sub(np_array $data, $arg)
+    public static function mul(np_array $data, $arg)
     {
         $result = [];
 
         foreach ($data as $item)
-            $result[] = $item - $arg;
+            $result[] = $item * $arg;
 
         return $result;
     }
@@ -149,16 +157,15 @@ abstract class operator
         return $result;
     }
 
-    public static function mod(np_array $data, $arg)
+    public static function sub(np_array $data, $arg)
     {
         $result = [];
 
         foreach ($data as $item)
-            $result[] = $item % $arg;
+            $result[] = $item - $arg;
 
         return $result;
     }
-
 
     public static function b_and(np_array $a1, np_array $a2)
     {
