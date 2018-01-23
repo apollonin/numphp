@@ -44,60 +44,72 @@ abstract class operator
 
     public static function eq(np_array $data, $arg)
     {
+        self::checkArg($data, $arg, $isSingle);
+
         $result = [];
 
-        foreach ($data as $item)
-            $result[] = $item == $arg;
+        foreach ($data as $index => $item)
+            $result[] = $item == $arg[$isSingle?0:$index];
 
         return $result;
     }
 
     public static function gt(np_array $data, $arg)
     {
+        self::checkArg($data, $arg, $isSingle);
+
         $result = [];
 
-        foreach ($data as $item)
-            $result[] = $item > $arg;
+        foreach ($data as $index => $item)
+            $result[] = $item > $arg[$isSingle?0:$index];
 
         return $result;
     }
 
     public static function gte(np_array $data, $arg)
     {
+        self::checkArg($data, $arg, $isSingle);
+
         $result = [];
 
-        foreach ($data as $item)
-            $result[] = $item >= $arg;
+        foreach ($data as $index => $item)
+            $result[] = $item >= $arg[$isSingle?0:$index];
 
         return $result;
     }
 
     public static function lt(np_array $data, $arg)
     {
+        self::checkArg($data, $arg, $isSingle);
+
         $result = [];
 
-        foreach ($data as $item)
-            $result[] = $item < $arg;
+        foreach ($data as $index => $item)
+            $result[] = $item < $arg[$isSingle?0:$index];
 
         return $result;
     }
 
     public static function lte(np_array $data, $arg)
     {
+        self::checkArg($data, $arg, $isSingle);
+
         $result = [];
 
-        foreach ($data as $item)
-            $result[] = $item <= $arg;
+        foreach ($data as $index => $item)
+            $result[] = $item <= $arg[$isSingle?0:$index];
 
         return $result;
     }
 
     public static function neq(np_array $data, $arg)
     {
+        self::checkArg($data, $arg, $isSingle);
+        
         $result = [];
 
-        foreach ($data as $item)
-            $result[] = $item != $arg;
+        foreach ($data as $index => $item)
+            $result[] = $item != $arg[$isSingle?0:$index];
 
         return $result;
     }

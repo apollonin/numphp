@@ -44,4 +44,18 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals((array) $res, [26, 30, 34]);
     }
+
+    public function testVectorComparationGt()
+    {
+        $res = $this->list[$this->list->gt([20, 25, 30, 17, 13])];
+
+        $this->assertEquals((array) $res, [30, 34]);
+    }
+
+    public function testVectorComparationEq()
+    {
+        $res = $this->list[$this->list->eq([18, 25, 26, 25, 34])];
+
+        $this->assertEquals((array) $res, [18, 25, 26, 34]);
+    }
 }

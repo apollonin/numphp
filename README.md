@@ -104,6 +104,16 @@ $result = $list[$list->gt(25)];
 [26, 29, 30, 34]
 ```
 
+Or even pass argument as another array. In this case comparison will be applied for each element respectively.
+
+```
+$result = $list[$list->gt([12, 26, 22, 29, 50])];
+
+// result
+[18, 26, 30]
+```
+
+
 You may also access index by string representations of comparison. 
 
 ```
