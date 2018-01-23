@@ -318,7 +318,7 @@ $result = Generator::arange(1, 15, 2);
 [1, 3, 5, 7, 9, 11, 13]
 ```
 
-**generate N Fibonacci numbers**
+**generate N [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) numbers**
 
 ```
 use numphp\Generator\Generator;
