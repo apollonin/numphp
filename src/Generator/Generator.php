@@ -3,6 +3,7 @@
 namespace numphp\Generator;
 
 use numphp\np_array;
+use numphp\Generator\Fibonacci;
 
 abstract class Generator
 {
@@ -37,6 +38,27 @@ abstract class Generator
         for ($i=$start; $i < $stop; $i+= $step)
         {
             $result[] = $i;
+        }
+
+        return new np_array($result);
+    }
+
+    /**
+     * Generates n first elements in Fibonacci numbers
+     * @param  int $n 
+     * @return np_array    
+     */
+    public static function fib($n)
+    {
+        if ($n < 0)
+            throw new \Exception("N should be positive number");
+            
+        $generator = Fibonacci::generate();
+    
+        $result = [];
+        for ($i=0; $i < $n; $i++) { 
+            $result[] = $generator->current();
+            $generator->next();
         }
 
         return new np_array($result);

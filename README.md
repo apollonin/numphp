@@ -317,3 +317,14 @@ $result = Generator::arange(1, 15, 2);
 //result
 [1, 3, 5, 7, 9, 11, 13]
 ```
+
+**generate N Fibonacci numbers**
+
+```
+use numphp\Generator\Generator;
+
+$result = Generator::fib(6);
+
+//result
+[1, 1, 2, 3, 5, 8]
+```
