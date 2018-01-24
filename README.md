@@ -66,6 +66,7 @@ For quick stub array creation you may use convenient predefined methods
 * zeros - creates array full of 0 
 * full- creates array full of provided fill_value
 * arange - creates evenly spaced values within a given interval.
+* fib - creates Fibonacci numbers
 
 
 ## Usage examples
@@ -74,7 +75,7 @@ For quick stub array creation you may use convenient predefined methods
 
 **create new array**
 ```
-$list = new np_array([18, 25, 26, 30, 34]);
+$list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 ```
 
 **get items by their indexes**
@@ -83,7 +84,7 @@ $list = new np_array([18, 25, 26, 30, 34]);
 $result = $list[[2,3]];
 
 // result
-[26, 29]
+[2, 3]
 ```
 
 To get item as single value - pass index as single value as well
@@ -92,33 +93,36 @@ To get item as single value - pass index as single value as well
 $result = $list[1];
 
 // result
-25
+1
 ```
 
 **get items by condition**
 
 ```
-$result = $list[$list->gt(25)];
+$result = $list[$list->gt(5)];
 
 // result
-[26, 29, 30, 34]
+[6, 7, 8, 9]
 ```
-
-Or even pass argument as another array. In this case comparison will be applied for each element respectively.
-
-```
-$result = $list[$list->gt([12, 26, 22, 29, 50])];
-
-// result
-[18, 26, 30]
-```
-
 
 You may also access index by string representations of comparison. 
 
 ```
 // gives the same result as above
-$result = $list[$list['> 25']];
+$result = $list[$list['> 5']];
+```
+
+> Important note about condition indexing
+> for instance `$mask = $list->gt(5)` returns masking array: [false, false, false, false, false, false, true, true, true, true].
+> And then `$list[$mask]` will return desired elements: [6, 7, 8, 9]
+
+You also can pass argument as another array. In this case comparison will be applied for each element respectively.
+
+```
+$result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
+
+// result
+[6, 7, 8, 9]
 ```
 
 
@@ -127,10 +131,10 @@ $result = $list[$list['> 25']];
 *b_and* - "bitwise" and
 
 ```
-$resuilt = $list[operator::b_and($list->gt(25), $list->lt(30))];
+$resuilt = $list[operator::b_and($list->gte(5), $list->lt(8))];
 
 // result
-[26, 29]
+[5, 6, 7]
 ```
 
 **array-like behaviour**
@@ -143,7 +147,7 @@ foreach ($list as $item) {
 }
 
 // output
-18 25 26 29 30 34
+0 1 2 3 4 5 6 7 8 9
 ```
 
 
@@ -152,16 +156,16 @@ foreach ($list as $item) {
 You may get slices of your np_array in a very convenient way. Just pass string formatted like `start:[stop][:step]` as index and you'll get result.
 
 ```
-$result = $list['1:3'];
+$result = $list['1:5'];
 
 //result
-[25, 26]
+[1, 2, 3, 4]
 
 
 $result = $list['1:5:2'];
 
 //result
-[25, 30]
+[1, 3]
 ```
 
 You can even skip `stop` and `step` values, which means: get all items from `start` to the end of array.
@@ -170,7 +174,7 @@ You can even skip `stop` and `step` values, which means: get all items from `sta
 $result = $list['1:'];
 
 //result
-[25, 26, 29, 30, 34]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
 ``` 
 
 You may even skip `start` value, than will be considered as 0 in this case
@@ -179,16 +183,16 @@ You may even skip `start` value, than will be considered as 0 in this case
 $result = $list[':'];
 
 //result
-[18, 25, 26, 29, 30, 34]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 Negative `start` or `stop` means indexes count from the end of array
 
 ```
-$result = $list['-3:5'];
+$result = $list['-7:6'];
 
 //result
-[29, 30]
+[3, 4, 5]
 ```
 
 
@@ -198,30 +202,30 @@ $result = $list['-3:5'];
 
 ```
 $result = clone($list);
-$result[[2,3]] = 9999;
+$result[[2,3]] = 999;
 
 // result
-[18, 25, 9999, 9999, 30, 34]
+[0, 1, 999, 999, 4, 5, 6, 7, 8, 9]
 ```
 
 **set items by conditions**
 
 ```
 $result = clone($list);
-$result[$result->gte(30)] = 9999;
+$result[$result->gte(5)] = 999;
 
 // result
-[18, 25, 26, 29, 9999, 9999]
+[0, 1, 2, 3, 4, 999, 999, 999, 999, 999]
 ```
 
 **set items by slice**
 
 ```
 $result = clone($list);
-$result['1:3'] = 9999;
+$result['1:3'] = 999;
 
 // result
-[18, 9999, 9999, 30, 34]
+[0, 999, 999, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 **adding new items**
@@ -230,10 +234,10 @@ Of course, you may add new items as usual
 
 ```
 $result = clone($list);
-$result[] = 9999;
+$result[] = 999;
 
 // result 
-[18, 25, 26, 29, 30, 34, 9999]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 999]
 ```
 
 ### Math operations
@@ -244,25 +248,25 @@ You are able to apply certain math operation to whole array. It will apply to ea
 $result = $list->add(100);
 
 // result 
-[118, 125, 126, 129, 130, 134]
+[100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
 ```
 
 You may also perform math operation under two np_arrays
 
 ```
-$result = $list->add(new np_array([1, 2, 3, 4, 5]))
+$result = $list->add(new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 //result
-[19, 27, 29, 34, 39]
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 ```
 
 Or event np_array and normal array!
 
 ```
-$result = $list->add([1, 2, 3, 4, 5]);
+$result = $list->add([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 //result
-[19, 27, 29, 34, 39]
+[0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 ```
 
 
@@ -311,10 +315,10 @@ $result = Generator::ones(5);
 //result
 [1, 1, 1, 1, 1]
 
-$result = Generator::full(5, 9999);
+$result = Generator::full(5, 999);
 
 //result
-[9999, 9999, 9999, 9999, 9999]
+[999, 999, 999, 999, 999]
 ```
 
 **create array within a range and given interval**

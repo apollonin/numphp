@@ -14,7 +14,7 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->list = new np_array([18, 25, 26, 30, 34]);
+        $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
     }
 
     public function testAddNewItemIndex()
@@ -22,7 +22,7 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res = clone($this->list);
         $res[] = 999;
 
-        $this->assertEquals((array) $res, [18, 25, 26, 30, 34, 999]);
+        $this->assertEquals((array) $res, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 999]);
     }
 
     public function testChangeItemByIndex()
@@ -30,15 +30,15 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res = clone($this->list);
         $res[2] = 999;
 
-        $this->assertEquals((array) $res, [18, 25, 999, 30, 34]);
+        $this->assertEquals((array) $res, [0, 1, 999, 3, 4, 5, 6, 7, 8, 9]);
     }
 
     public function testChangeItemByCondition()
     {
         $res = clone($this->list);
-        $res[$res->lt(26)] = 999;
+        $res[$res->lt(5)] = 999;
 
-        $this->assertEquals((array) $res, [999, 999, 26, 30, 34]);
+        $this->assertEquals((array) $res, [999, 999, 999, 999, 999, 5, 6, 7, 8, 9]);
     }
 
     public function testAddItemAndChangeAll()
@@ -47,15 +47,15 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res[] = 10;
         $res[$res->lt(999)] = 999;
 
-        $this->assertEquals((array) $res, [999, 999, 999, 999, 999, 999]);
+        $this->assertEquals((array) $res, [999, 999, 999, 999, 999, 999, 999, 999, 999, 999, 999]);
     }
     
     public function testChangeItemByConditionStringIndex()
     {
         $res = clone($this->list);
-        $res[$res['< 26']] = 999;
+        $res[$res['< 5']] = 999;
 
-        $this->assertEquals((array) $res, [999, 999, 26, 30, 34]);
+        $this->assertEquals((array) $res, [999, 999, 999, 999, 999, 5, 6, 7, 8, 9]);
     }
 
     public function testSetItemsBySlice()
@@ -63,6 +63,6 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res = clone($this->list);
         $res['1:3'] = 999;
 
-        $this->assertEquals((array) $res, [18, 999, 999, 30, 34]);
+        $this->assertEquals((array) $res, [0, 999, 999, 3, 4, 5, 6, 7, 8, 9]);
     }
 }

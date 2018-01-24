@@ -7,7 +7,7 @@ use numphp\operator;
 use numphp\Random\Random;
 use numphp\Generator\Generator;
 
-$list = new np_array([18, 25, 26, 29, 30, 34]);
+$list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 //iterate
 echo "Init array\n";
@@ -22,45 +22,42 @@ echo "\n\n";
  * Indexing
  */
 
-$res1 = $list[operator::b_and($list->gt(25), $list->lt(30))];
-echo '>= 25 and < 30: ' . "\n" . $res1 . "\n\n";
+echo 'mask >= 5' . "\n" . $list->gte(5) . "\n\n";
 
+$res1 = $list[operator::b_and($list->gte(5), $list->lt(8))];
+echo '>= 5 and < 8: ' . "\n" . $res1 . "\n\n";
 
-$res2 = $res1[$res1->gt(27)];
-echo 'previous > 27: ' . "\n" . $res2 . "\n\n";
+echo 'previous > 5: ' . "\n" . $res1[$res1->gt(5)] . "\n\n";
 
 echo 'index 2: ' . "\n" . $list[2] . "\n\n";
 
-$res4 = $list[$list->eq(26)];
-echo 'equal 26: ' . "\n" . $res4 . "\n\n";
+echo 'equal 5: ' . "\n" . $list[$list->eq(5)] . "\n\n";
 
-echo 'short indexing < 30: ' . "\n" . $list[$list['< 30']] . "\n\n";
+echo 'short indexing < 5: ' . "\n" . $list[$list['< 5']] . "\n\n";
 
 /**
  * Set items
  */
 
 $res5 = clone($list);
-$res5[[2,3]] = 9999;
-echo 'set indexes 2 and 3 to 9999: ' . "\n" . $res5 . "\n\n";
+$res5[[2,3]] = 999;
+echo 'set indexes 2 and 3 to 999: ' . "\n" . $res5 . "\n\n";
 
 $res6 = clone($list);
-$res6[$res6->gte(30)] = 9999;
-echo 'set elements >= 30 to 9999: ' . "\n" . $res6 . "\n\n";
+$res6[$res6->gte(5)] = 999;
+echo 'set elements >= 5 to 999: ' . "\n" . $res6 . "\n\n";
 
 
 /**
  * Math operations
  */
 
-$res7 = $list->mul(5);
-echo 'multiply all to 5: ' . "\n" . $res7 . "\n\n";
+echo 'multiply all to 5: ' . "\n" . $list->mul(5) . "\n\n";
 
-$res8 = $list[$list->gt(29)]->pow(2);
-echo 'power > 29 by 2: ' . "\n" . $res8 . "\n\n";
+echo 'power > 5 by 2: ' . "\n" . $list[$list->gt(5)]->pow(2) . "\n\n";
 
 echo 'add 5' . "\n" . $list->add(5) . "\n\n";
-echo 'add vector [1, 2, 3, 4, 5, 6]' . "\n" . ($list->add(Generator::arange(6))) . "\n\n";
+echo 'add vector [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]' . "\n" . ($list->add(Generator::arange(10))) . "\n\n";
 
 
 
@@ -92,4 +89,5 @@ echo 'slicing [1:5:2]: ' . "\n" . $list['1:5:2'] . "\n\n";
 echo 'slicing [1:]: ' . "\n" . $list['1:'] . "\n\n";
 
 //negative
-echo 'slicing [-3:5]: ' . "\n" . $list['-3:5'] . "\n\n";
+echo 'slicing [-7:6]: ' . "\n" . $list['-7:6'] . "\n\n";
+

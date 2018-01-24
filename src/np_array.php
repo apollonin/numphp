@@ -4,10 +4,11 @@ namespace numphp;
 
 use numphp\operator;
 use numphp\Indexing\Indexer;
+use numphp\Printing\Printer;
 
 class np_array extends \ArrayObject
 {
-    use Indexer;
+    use Indexer, Printer;
 
     public function __call($method, $args)
     {
@@ -20,10 +21,5 @@ class np_array extends \ArrayObject
         }
         else
             throw new \Exception("Invalid operator: " . $method);
-    }
-
-    public function __toString()
-    {
-        return sprintf("[%s]", implode(", ", (array) $this));
     }
 }

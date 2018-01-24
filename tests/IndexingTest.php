@@ -14,28 +14,28 @@ class IndexingTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->list = new np_array([18, 25, 26, 30, 34]);
+        $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
     }
 
     public function testSimpleIndex()
     {
         $res = $this->list[2];
 
-        $this->assertEquals($res, 26);
+        $this->assertEquals($res, 2);
     }
 
     public function testArrayIndex()
     {
         $res = $this->list[[3,4]];
 
-        $this->assertEquals((array) $res, [30, 34]);
+        $this->assertEquals((array) $res, [3, 4]);
     }
 
     public function testConditionIndex()
     {
-        $res = $this->list[$this->list->gte(25)];
+        $res = $this->list[$this->list->gte(5)];
 
-        $this->assertEquals((array) $res, [25, 26, 30, 34]);
+        $this->assertEquals((array) $res, [5, 6, 7, 8, 9]);
     }
 
     

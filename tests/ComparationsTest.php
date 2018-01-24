@@ -15,47 +15,47 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->list = new np_array([18, 25, 26, 30, 34]);
+        $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
     }
 
     public function testSimpleComparationGt()
     {
-        $res = $this->list[$this->list->gt(25)];
+        $res = $this->list[$this->list->gt(5)];
 
-        $this->assertEquals((array) $res, [26, 30, 34]);
+        $this->assertEquals((array) $res, [6, 7, 8, 9]);
     }
 
     public function testSimpleComparationEq()
     {
-        $res = $this->list[$this->list->eq(25)];
+        $res = $this->list[$this->list->eq(5)];
 
-        $this->assertEquals((array) $res, [25]);
+        $this->assertEquals((array) $res, [5]);
     }
 
     public function testBitwiseComparations()
     {
-        $res = $this->list[operator::b_and($this->list->gt(25), $this->list->lt(30))];
-        $this->assertEquals((array) $res, [26]);
+        $res = $this->list[operator::b_and($this->list->gt(5), $this->list->lt(9))];
+        $this->assertEquals((array) $res, [6, 7, 8]);
     }
 
     public function testStringComparisonIndex()
     {
-        $res = $this->list[$this->list['> 25']];
+        $res = $this->list[$this->list['> 5']];
 
-        $this->assertEquals((array) $res, [26, 30, 34]);
+        $this->assertEquals((array) $res, [6, 7, 8, 9]);
     }
 
     public function testVectorComparationGt()
     {
-        $res = $this->list[$this->list->gt([20, 25, 30, 17, 13])];
+        $res = $this->list[$this->list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
 
-        $this->assertEquals((array) $res, [30, 34]);
+        $this->assertEquals((array) $res, [5, 6, 7, 8, 9]);
     }
 
     public function testVectorComparationEq()
     {
-        $res = $this->list[$this->list->eq([18, 25, 26, 25, 34])];
+        $res = $this->list[$this->list->eq([0, 5, 6, 7, 4, 3, 5, 6, 7, 8])];
 
-        $this->assertEquals((array) $res, [18, 25, 26, 34]);
+        $this->assertEquals((array) $res, [0, 4]);
     }
 }
