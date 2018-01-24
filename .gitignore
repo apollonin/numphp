@@ -7,3 +7,4 @@ vendor
 composer.phar
 composer.lock
 *.sublime*
+clover.xml

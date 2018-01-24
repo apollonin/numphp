@@ -1,10 +1,10 @@
 <?php
 
-namespace numphp;
+namespace numphp\Indexing;
 
 use numphp\operator;
 
-class StringIndexator
+class StringIndexer
 {
     private $str;
 
