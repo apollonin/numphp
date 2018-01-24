@@ -113,8 +113,21 @@ $result = $list[$list['> 5']];
 ```
 
 > Important note about condition indexing
-> for instance `$mask = $list->gt(5)` returns masking array: [false, false, false, false, false, false, true, true, true, true].
-> And then `$list[$mask]` will return desired elements: [6, 7, 8, 9]
+
+Conditional operator returns masking array
+
+```
+  $mask = $list->gt(5);
+
+  // mask
+  [false, false, false, false, false, false, true, true, true, true]
+
+  // and then
+  $result = $list[$mask];
+
+  // result 
+  [6, 7, 8, 9]
+```
 
 You also can pass argument as another array. In this case comparison will be applied for each element respectively.
 
