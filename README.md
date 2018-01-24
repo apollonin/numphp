@@ -112,7 +112,7 @@ You may also access index by string representations of comparison.
 $result = $list[$list['> 5']];
 ```
 
-> Important note about condition indexing
+> Important note about conditional indexing
 
 Conditional operator returns masking array
 
