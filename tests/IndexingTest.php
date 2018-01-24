@@ -3,7 +3,6 @@
 namespace Tests;
 
 use numphp\np_array;
-use numphp\operator;
 
 class IndexingTest extends \PHPUnit_Framework_TestCase
 {
