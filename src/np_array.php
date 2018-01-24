@@ -40,6 +40,15 @@ class np_array extends \ArrayObject
                 parent::offsetSet($index, $value);
             }
         }
+        elseif(Slice::isValidFormat($offset))
+        {
+            list($start, $stop, $step) = Slice::getOffsets($this, $offset);
+
+            for ($i=$start; $i < $stop; $i += $step)
+            {
+                parent::offsetSet($i, $value);
+            }
+        }
         else
         {
             parent::offsetSet($offset, $value);

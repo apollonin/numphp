@@ -37,7 +37,7 @@ composer require apollonin/numphp
 * get items by conditions
   * b_and - logical AND
   * b_or - logical OR
-* set items values according to conditions. Conditions are the same as for selection.
+* set items values according to conditions, indexes or slices
 * apply math operations to whole array
   * mul - multiply
   * div - divide
@@ -212,6 +212,16 @@ $result[$result->gte(30)] = 9999;
 
 // result
 [18, 25, 26, 29, 9999, 9999]
+```
+
+**set items by slice**
+
+```
+$result = clone($list);
+$result['1:3'] = 9999;
+
+// result
+[18, 9999, 9999, 30, 34]
 ```
 
 **adding new items**

@@ -51,4 +51,19 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [999, 999, 999, 999, 999, 999]);
     }
     
+    public function testChangeItemByConditionStringIndex()
+    {
+        $res = clone($this->list);
+        $res[$res['< 26']] = 999;
+
+        $this->assertEquals((array) $res, [999, 999, 26, 30, 34]);
+    }
+
+    public function testSetItemsBySlice()
+    {
+        $res = clone($this->list);
+        $res['1:3'] = 999;
+
+        $this->assertEquals((array) $res, [18, 999, 999, 30, 34]);
+    }
 }
