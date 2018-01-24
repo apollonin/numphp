@@ -91,3 +91,13 @@ echo 'slicing [1:]: ' . "\n" . $list['1:'] . "\n\n";
 //negative
 echo 'slicing [-7:6]: ' . "\n" . $list['-7:6'] . "\n\n";
 
+
+
+
+/**
+ * Matrix
+ */
+
+$matrix = new np_array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+
+echo $matrix;
