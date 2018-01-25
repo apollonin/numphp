@@ -5,10 +5,11 @@ namespace numphp;
 use numphp\Operator\Operators;
 use numphp\Indexing\Indexer;
 use numphp\Printing\Printer;
+use numphp\Statistics\Statistics;
 
 class np_array extends \ArrayObject
 {
-    use Indexer, Printer;
+    use Indexer, Printer, Statistics;
 
     public function __call($method, $args)
     {
