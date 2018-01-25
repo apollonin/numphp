@@ -2,7 +2,7 @@
 
 namespace numphp\Indexing;
 
-use numphp\operator;
+use numphp\Operator\Operators;
 
 class StringIndexer
 {
@@ -22,7 +22,7 @@ class StringIndexer
         //for the first version we accept only single operators: > 30, and so on.
         list($method, $arg) = explode(' ', $this->str);
 
-        $result['method'] = operator::$comparations2Symbol[$method];
+        $result['method'] = Operators::$comparations2Symbol[$method];
         $result['arg'] = $arg;
 
         return $result;
@@ -31,10 +31,10 @@ class StringIndexer
     private function normalize()
     {
         $str = str_replace(
-                array_keys(operator::$comparations2Symbol), 
+                array_keys(Operators::$comparations2Symbol), 
                 array_map(function($item){
                     return '  ' . $item . ' ';
-                }, array_keys(operator::$comparations2Symbol)), 
+                }, array_keys(Operators::$comparations2Symbol)), 
                 $this->str);
 
         $this->str = trim(str_replace('  ',' ', $str));

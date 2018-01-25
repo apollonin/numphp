@@ -8,9 +8,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/9cda6d0e7e7967900ff2/maintainability)](https://codeclimate.com/github/apollonin/numphp/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9cda6d0e7e7967900ff2/test_coverage)](https://codeclimate.com/github/apollonin/numphp/test_coverage)
 
-Numphp is a library for manipulating numbers. If you have array of numbers, numphp gives you an ability to do wide range of useful operations.
+Numphp is a library for manipulating numbers. If you have an array of numbers, numphp gives you an ability to do wide range of useful operations.
 
-Contributions as highly appreciated.
+Contributions are highly appreciated.
 
 ## Installation
 
@@ -45,28 +45,37 @@ composer require apollonin/numphp
   * sub - subtract
   * pow - power
   * mod - mod
-* Get slice of array
+* get slice of array
+* get statistical values from array
+  * count
+  * max
+  * mean
+  * median
+  * min
+  * sum
+  * describe - special method that displays all above values
 
-np_array is also has classical array behaviour. So you are able to iterate through it as usual.
+np_array also has classical array behaviour. So you are able to iterate through it as usual.
 
 **random module**
 
-Library also provide convenient way to generate new np_arrays and populate them with random values. Available methods are
+Numphp also provides convenient ways to generate new np_arrays and populate them with random values. Available methods are
 
 * rand
 * randint
 
-If `size` parameter is given, returns np_array with appropriate elements. Otherwise - return single random value.
+If `size` parameter is given, returns np_array with appropriate elements. Otherwise, it returns single random value.
 
 **generators**
 
-For quick stub array creation you may use convenient predefined methods
+For quick stub array creation you may use these convenient predefined methods
 
 * ones - creates array full of 1
 * zeros - creates array full of 0 
 * full- creates array full of provided fill_value
 * arange - creates evenly spaced values within a given interval.
 * fib - creates Fibonacci numbers
+* formula - returns sequence of numbers, based on provided formula
 
 
 ## Usage examples
@@ -129,7 +138,7 @@ Conditional operator returns masking array
   [6, 7, 8, 9]
 ```
 
-You also can pass argument as another array. In this case comparison will be applied for each element respectively.
+You also can pass another array as an argument. In this case the comparison will be applied for each element respectively.
 
 ```
 $result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
@@ -144,7 +153,7 @@ $result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
 *b_and* - "bitwise" and
 
 ```
-$resuilt = $list[operator::b_and($list->gte(5), $list->lt(8))];
+$resuilt = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 
 // result
 [5, 6, 7]
@@ -190,7 +199,7 @@ $result = $list['1:'];
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ``` 
 
-You may even skip `start` value, than will be considered as 0 in this case
+You may even skip `start` value; it will be considered as 0 in this case
 
 ```
 $result = $list[':'];
@@ -255,7 +264,7 @@ $result[] = 999;
 
 ### Math operations
 
-You are able to apply certain math operation to whole array. It will apply to each element.
+You are able to apply certain math operations to the whole array. It will apply to each element.
 
 ```
 $result = $list->add(100);
@@ -354,4 +363,18 @@ $result = Generator::fib(6);
 
 //result
 [1, 1, 2, 3, 5, 8]
+```
+
+
+**generate numbers according to formula**
+
+Provide [callable](http://php.net/manual/en/language.types.callable.php) as a first argument. It must return value, that will be used in sequence.
+
+```
+use numphp\Generator\Generator;
+
+$result = Generator::formula(function($n){return 2*$n+1;}, 1, 5);
+
+//result
+[3, 5, 7, 9]
 ```
