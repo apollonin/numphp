@@ -67,6 +67,7 @@ For quick stub array creation you may use these convenient predefined methods
 * full- creates array full of provided fill_value
 * arange - creates evenly spaced values within a given interval.
 * fib - creates Fibonacci numbers
+* formula - returns sequence of numbers, based on provided formula
 
 
 ## Usage examples
@@ -354,4 +355,18 @@ $result = Generator::fib(6);
 
 //result
 [1, 1, 2, 3, 5, 8]
+```
+
+
+**generate numbers according to formula**
+
+Provide [callable](http://php.net/manual/en/language.types.callable.php) as a first argument. It must return value, that will be used in sequence.
+
+```
+use numphp\Generator\Generator;
+
+$result = Generator::formula(function($n){return 2*$n+1;}, 1, 5);
+
+//result
+[3, 5, 7, 9]
 ```

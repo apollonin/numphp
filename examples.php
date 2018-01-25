@@ -79,6 +79,8 @@ echo 'ones array with size of 5: ' . "\n" . Generator::ones(5) . "\n\n";
 
 echo 'arange: ' . "\n" . Generator::arange(1, 15) . "\n\n";
 
+echo 'formula 2n+1 from 1 to 5' . "\n" . Generator::formula(function($n){return 2*$n+1;}, 1, 5) . "\n\n";
+
 
 
 

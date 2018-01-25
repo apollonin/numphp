@@ -63,5 +63,32 @@ abstract class Generator
 
         return new np_array($result);
     }
+
+    /**
+     * Generates sequence of numbers according to passed formula
+     * @param  Callable $formula number generator rule. Should return result value
+     * @param  int   $start   
+     * @param  int  $stop    
+     * @param  int  $step    
+     * @return np_array            
+     */
+    public static function formula(Callable $formula, $start, $stop=0, $step=1)
+    {
+        if (!$stop)
+        {
+            $stop = $start;
+            $start = 0;
+        }
+
+        $result = [];
+
+        for ($i=$start; $i < $stop; $i+= $step)
+        {
+            $result[] = $formula($i);
+        }
+
+        return new np_array($result);
+
+    }
 }
 
