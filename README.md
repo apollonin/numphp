@@ -145,7 +145,7 @@ $result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
 *b_and* - "bitwise" and
 
 ```
-$resuilt = $list[operator::b_and($list->gte(5), $list->lt(8))];
+$resuilt = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 
 // result
 [5, 6, 7]

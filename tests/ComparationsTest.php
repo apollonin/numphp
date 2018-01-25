@@ -3,7 +3,7 @@
 namespace Tests;
 
 use numphp\np_array;
-use numphp\operator;
+use numphp\Operator\Bitwise;
 
 class ComparationsTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,7 +34,7 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
 
     public function testBitwiseComparations()
     {
-        $res = $this->list[operator::b_and($this->list->gt(5), $this->list->lt(9))];
+        $res = $this->list[Bitwise::b_and($this->list->gt(5), $this->list->lt(9))];
         $this->assertEquals((array) $res, [6, 7, 8]);
     }
 

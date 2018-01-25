@@ -2,7 +2,6 @@
 
 namespace numphp\Indexing;
 
-use numphp\operator;
 use numphp\Slicing\Slice;
 use numphp\Indexing\StringIndexer;
 

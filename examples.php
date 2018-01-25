@@ -3,7 +3,7 @@
 require_once realpath(__DIR__ . '/vendor') . '/autoload.php';
 
 use numphp\np_array;
-use numphp\operator;
+use numphp\Operator\Bitwise;
 use numphp\Random\Random;
 use numphp\Generator\Generator;
 
@@ -24,7 +24,7 @@ echo "\n\n";
 
 echo 'mask >= 5' . "\n" . $list->gte(5) . "\n\n";
 
-$res1 = $list[operator::b_and($list->gte(5), $list->lt(8))];
+$res1 = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 echo '>= 5 and < 8: ' . "\n" . $res1 . "\n\n";
 
 echo 'previous > 5: ' . "\n" . $res1[$res1->gt(5)] . "\n\n";
