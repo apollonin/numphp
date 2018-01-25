@@ -45,7 +45,15 @@ composer require apollonin/numphp
   * sub - subtract
   * pow - power
   * mod - mod
-* Get slice of array
+* get slice of array
+* get statistical values from array
+  * count
+  * max
+  * mean
+  * median
+  * min
+  * sum
+  * describe - special method that displays all above values
 
 np_array also has classical array behaviour. So you are able to iterate through it as usual.
 

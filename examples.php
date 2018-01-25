@@ -93,3 +93,12 @@ echo 'slicing [1:]: ' . "\n" . $list['1:'] . "\n\n";
 //negative
 echo 'slicing [-7:6]: ' . "\n" . $list['-7:6'] . "\n\n";
 
+
+
+
+/** Statistics **/
+
+echo 'sum is: ' . "\n" . $list->sum() . "\n\n";
+echo 'mean is: ' . "\n" . $list->mean() . "\n\n";
+
+echo 'describe ' . print_r($list->describe(), true) . "\n\n";
