@@ -31,11 +31,32 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1]);
     }
 
+    public function testDiv()
+    {
+        $res = $this->list->div(2);
+
+        $this->assertEquals((array) $res, [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]);
+    }
+
     public function testPow()
     {
         $res = $this->list->pow(2);
 
         $this->assertEquals((array) $res, [0, 1, 4, 9, 16, 25,36, 49, 64, 81]);
+    }
+
+    public function testMod()
+    {
+        $res = $this->list->mod(2);
+
+        $this->assertEquals((array) $res, [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]);
+    }
+
+    public function testMul()
+    {
+        $res = $this->list->mul(5);
+
+        $this->assertEquals((array) $res, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45]);
     }
 
     public function testAddVector()
@@ -57,5 +78,19 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
         $res = $this->list->sub(new np_array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]));
 
         $this->assertEquals((array) $res, [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1]);
+    }
+
+    public function testExceptionInvalidArg()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = $this->list->add('string');
+    }
+
+    public function testExceptionInvalidOperator()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = $this->list->qqq('string');
     }
 }

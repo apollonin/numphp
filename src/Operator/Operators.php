@@ -1,10 +1,10 @@
 <?php
 
-namespace numphp;
+namespace numphp\Operator;
 
 use numphp\np_array;
 
-abstract class operator
+abstract class Operators
 {
     public static $comparations = [
         'eq', 
@@ -31,11 +31,6 @@ abstract class operator
         'mul',
         'pow',
         'sub',
-    ];
-
-    public static $bitwise_operators = [
-        'b_and',
-        'b_or'
     ];
 
     /**
@@ -216,37 +211,15 @@ abstract class operator
     private static function formatArg($arg)
     {
         if (is_numeric($arg))
-            $arg = new np_array([$arg]);
-        elseif (is_array($arg))
-            $arg = new np_array($arg);
-        elseif(is_object($arg) && !$arg instanceof np_array)
-            throw new \Exception("Operators accept only numbers, array or np_arrays as second argument");
+            return new np_array([$arg]);
 
-        return $arg;
+        if (is_array($arg))
+            return new np_array($arg);
+
+        if (is_object($arg) && $arg instanceof np_array)
+            return $arg;
+
+        // unknown arg format
+        throw new \Exception("Operators accept only numbers, array or np_arrays as second argument");
     }
-
-
-    /**
-     * 'Bitwise' operators
-     */
-
-    public static function b_and(np_array $a1, np_array $a2)
-    {
-        $result = [];
-
-        foreach ($a1 as $key => $value)
-            $result[] = $value && $a2[$key];
-
-        return $result;
-    }
-
-    public static function b_or(np_array $a1, np_array $a2)
-    {
-        $result = [];
-
-        foreach ($a1 as $key => $value)
-            $result[] = $value || $a2[$key];
-
-        return $result;
-    }    
 }

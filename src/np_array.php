@@ -2,22 +2,27 @@
 
 namespace numphp;
 
-use numphp\operator;
+use numphp\Operator\Operators;
 use numphp\Indexing\Indexer;
 use numphp\Printing\Printer;
+use numphp\Statistics\Statistics;
 
 class np_array extends \ArrayObject
 {
-    use Indexer, Printer;
+    use Indexer, Printer, Statistics;
 
     public function __construct($input = [], $flags = 0, $iterator_class = "ArrayIterator")
     {
         // convert each subarray into np_array
-        foreach ($input as &$item)
+        if (is_array($input))
         {
-            if (is_array($item))
-                $item = new np_array($item);
+            foreach ($input as &$item)
+            {
+                if (is_array($item))
+                    $item = new np_array($item);
+            }
         }
+        
         return parent::__construct($input, $flags, $iterator_class);
     }
 
@@ -25,10 +30,10 @@ class np_array extends \ArrayObject
     {
         // comparations call: eq, gt. gte, lt, etc...
         // math operations call: add, sub, div, etc...
-        if (in_array($method, operator::$comparations) || in_array($method, operator::$operators))
+        if (in_array($method, Operators::$comparations) || in_array($method, Operators::$operators))
         {
             array_unshift($args, $this);
-            return new self(forward_static_call_array(['numphp\operator', $method], $args));
+            return new self(forward_static_call_array(['numphp\Operator\Operators', $method], $args));
         }
         else
             throw new \Exception("Invalid operator: " . $method);

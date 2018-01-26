@@ -2,7 +2,6 @@
 
 namespace numphp\Indexing;
 
-use numphp\operator;
 use numphp\Slicing\Slice;
 use numphp\Indexing\StringIndexer;
 
@@ -61,6 +60,16 @@ trait Indexer
 
 
         // use string indexer
+        return $this->getStringOffset($offset);
+    }
+
+    public function mask($offset)
+    {
+        return $this->getStringOffset($offset);
+    }
+
+    private function getStringOffset($offset)
+    {
         $stringIndexer = new StringIndexer($offset);
         $callee = $stringIndexer->convertToMethod();
 

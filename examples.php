@@ -3,7 +3,7 @@
 require_once realpath(__DIR__ . '/vendor') . '/autoload.php';
 
 use numphp\np_array;
-use numphp\operator;
+use numphp\Operator\Bitwise;
 use numphp\Random\Random;
 use numphp\Generator\Generator;
 
@@ -23,8 +23,9 @@ echo "\n\n";
  */
 
 echo 'mask >= 5' . "\n" . $list->gte(5) . "\n\n";
+echo 'mask >= 5 (explicit)' . "\n" . $list->mask('> 5') . "\n\n";
 
-$res1 = $list[operator::b_and($list->gte(5), $list->lt(8))];
+$res1 = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 echo '>= 5 and < 8: ' . "\n" . $res1 . "\n\n";
 
 echo 'previous > 5: ' . "\n" . $res1[$res1->gt(5)] . "\n\n";
@@ -79,6 +80,8 @@ echo 'ones array with size of 5: ' . "\n" . Generator::ones(5) . "\n\n";
 
 echo 'arange: ' . "\n" . Generator::arange(1, 15) . "\n\n";
 
+echo 'formula 2n+1 from 1 to 5' . "\n" . Generator::formula(function($n){return 2*$n+1;}, 1, 5) . "\n\n";
+
 
 
 
@@ -94,6 +97,7 @@ echo 'slicing [-7:6]: ' . "\n" . $list['-7:6'] . "\n\n";
 
 
 
+
 /**
  * Matrix
  */
@@ -101,3 +105,11 @@ echo 'slicing [-7:6]: ' . "\n" . $list['-7:6'] . "\n\n";
 $matrix = new np_array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
 
 echo $matrix;
+
+/** Statistics **/
+
+echo 'sum is: ' . "\n" . $list->sum() . "\n\n";
+echo 'mean is: ' . "\n" . $list->mean() . "\n\n";
+
+echo 'describe ' . print_r($list->describe(), true) . "\n\n";
+
