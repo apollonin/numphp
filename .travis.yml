@@ -1,27 +1,34 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=936e0a1ab71092997c76c2dda7a2157e610ef1ba75d22869fce0556e9255f658
-language: php
-php :
-  - 5.6
 
-before_script:
-  - composer self-update
-  - composer install --prefer-source --no-interaction --dev
+matrix:
+  include:
+    - language: php
+      php :
+        - 5.6
 
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+      before_script:
+        - composer self-update
+        - composer install --prefer-source --no-interaction --dev
 
-script:
-  - vendor/bin/phpunit --coverage-clover=coverage.xml
-  - bundle exec rspec
+      script:
+        - vendor/bin/phpunit --coverage-clover=coverage.xml
 
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+      after_success:
+        - bash <(curl -s https://codecov.io/bash)
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    - language: ruby
+      rvm:
+        - 2.2.0
+      before_script:
+        - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        - chmod +x ./cc-test-reporter
+        - ./cc-test-reporter before-build
+      script:
+        - bundle exec rspec
+      after_script:
+        - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
   email: false
