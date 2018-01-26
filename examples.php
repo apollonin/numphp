@@ -83,6 +83,13 @@ echo 'arange: ' . "\n" . Generator::arange(1, 15) . "\n\n";
 echo 'formula 2n+1 from 1 to 5' . "\n" . Generator::formula(function($n){return 2*$n+1;}, 1, 5) . "\n\n";
 
 
+/**
+ * Matrix
+ */
+
+$matrix = new np_array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+
+echo $matrix;
 
 
 /** Slicing **/
@@ -94,22 +101,9 @@ echo 'slicing [1:]: ' . "\n" . $list['1:'] . "\n\n";
 //negative
 echo 'slicing [-7:6]: ' . "\n" . $list['-7:6'] . "\n\n";
 
-
-
-
-
-/**
- * Matrix
- */
-
-$matrix = new np_array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
-
-echo $matrix;
-
 /** Statistics **/
 
 echo 'sum is: ' . "\n" . $list->sum() . "\n\n";
 echo 'mean is: ' . "\n" . $list->mean() . "\n\n";
 
 echo 'describe ' . print_r($list->describe(), true) . "\n\n";
-
