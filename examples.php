@@ -23,6 +23,7 @@ echo "\n\n";
  */
 
 echo 'mask >= 5' . "\n" . $list->gte(5) . "\n\n";
+echo 'mask >= 5 (explicit)' . "\n" . $list->mask('> 5') . "\n\n";
 
 $res1 = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 echo '>= 5 and < 8: ' . "\n" . $res1 . "\n\n";
