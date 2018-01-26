@@ -83,13 +83,13 @@ For quick stub array creation you may use these convenient predefined methods
 ### Indexing
 
 **create new array**
-```
+```php
 $list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 ```
 
 **get items by their indexes**
 
-```
+```php
 $result = $list[[2,3]];
 
 // result
@@ -98,7 +98,7 @@ $result = $list[[2,3]];
 
 To get item as single value - pass index as single value as well
 
-```
+```php
 $result = $list[1];
 
 // result
@@ -107,7 +107,7 @@ $result = $list[1];
 
 **get items by condition**
 
-```
+```php
 $result = $list[$list->gt(5)];
 
 // result
@@ -116,7 +116,7 @@ $result = $list[$list->gt(5)];
 
 You may also access index by string representations of comparison. 
 
-```
+```php
 // gives the same result as above
 $result = $list[$list['> 5']];
 ```
@@ -125,7 +125,7 @@ $result = $list[$list['> 5']];
 
 Conditional operator returns masking array
 
-```
+```php
   $mask = $list->gt(5);
 
   // mask
@@ -140,7 +140,7 @@ Conditional operator returns masking array
 
 You also can pass another array as an argument. In this case the comparison will be applied for each element respectively.
 
-```
+```php
 $result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
 
 // result
@@ -152,7 +152,7 @@ $result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
 
 *b_and* - "bitwise" and
 
-```
+```php
 $resuilt = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 
 // result
@@ -163,7 +163,7 @@ $resuilt = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 
 You may also iterate your np_array object as usual
 
-```
+```php
 foreach ($list as $item) {
     echo $item . " ";
 }
@@ -177,7 +177,7 @@ foreach ($list as $item) {
 
 You may get slices of your np_array in a very convenient way. Just pass string formatted like `start:[stop][:step]` as index and you'll get result.
 
-```
+```php
 $result = $list['1:5'];
 
 //result
@@ -192,7 +192,7 @@ $result = $list['1:5:2'];
 
 You can even skip `stop` and `step` values, which means: get all items from `start` to the end of array.
 
-```
+```php
 $result = $list['1:'];
 
 //result
@@ -201,7 +201,7 @@ $result = $list['1:'];
 
 You may even skip `start` value; it will be considered as 0 in this case
 
-```
+```php
 $result = $list[':'];
 
 //result
@@ -210,7 +210,7 @@ $result = $list[':'];
 
 Negative `start` or `stop` means indexes count from the end of array
 
-```
+```php
 $result = $list['-7:6'];
 
 //result
@@ -222,7 +222,7 @@ $result = $list['-7:6'];
 
 **set items by indexes**
 
-```
+```php
 $result = clone($list);
 $result[[2,3]] = 999;
 
@@ -232,7 +232,7 @@ $result[[2,3]] = 999;
 
 **set items by conditions**
 
-```
+```php
 $result = clone($list);
 $result[$result->gte(5)] = 999;
 
@@ -242,7 +242,7 @@ $result[$result->gte(5)] = 999;
 
 **set items by slice**
 
-```
+```php
 $result = clone($list);
 $result['1:3'] = 999;
 
@@ -254,7 +254,7 @@ $result['1:3'] = 999;
 
 Of course, you may add new items as usual
 
-```
+```php
 $result = clone($list);
 $result[] = 999;
 
@@ -266,7 +266,7 @@ $result[] = 999;
 
 You are able to apply certain math operations to the whole array. It will apply to each element.
 
-```
+```php
 $result = $list->add(100);
 
 // result 
@@ -275,7 +275,7 @@ $result = $list->add(100);
 
 You may also perform math operation under two np_arrays
 
-```
+```php
 $result = $list->add(new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 //result
@@ -284,7 +284,7 @@ $result = $list->add(new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]))
 
 Or event np_array and normal array!
 
-```
+```php
 $result = $list->add([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 //result
@@ -297,7 +297,7 @@ $result = $list->add([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 **create array with random floats**
 
-```
+```php
 use numphp\Random\Random;
 
 $result = Random::rand(5)
@@ -309,7 +309,7 @@ $result = Random::rand(5)
 
 **array with random integers**
 
-```
+```php
 use numphp\Random\Random;
 
 $result = Random::randint(5, 15, 10);
@@ -323,7 +323,7 @@ $result = Random::randint(5, 15, 10);
 
 **create array full of zeros, ones or fill_value**
 
-```
+```php
 use numphp\Generator\Generator;
 
 $result = Generator::zeros(5);
@@ -345,7 +345,7 @@ $result = Generator::full(5, 999);
 
 **create array within a range and given interval**
 
-```
+```php
 use numphp\Generator\Generator;
 
 $result = Generator::arange(1, 15, 2);
@@ -356,7 +356,7 @@ $result = Generator::arange(1, 15, 2);
 
 **generate N [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) numbers**
 
-```
+```php
 use numphp\Generator\Generator;
 
 $result = Generator::fib(6);
@@ -370,7 +370,7 @@ $result = Generator::fib(6);
 
 Provide [callable](http://php.net/manual/en/language.types.callable.php) as a first argument. It must return value, that will be used in sequence.
 
-```
+```php
 use numphp\Generator\Generator;
 
 $result = Generator::formula(function($n){return 2*$n+1;}, 1, 5);
