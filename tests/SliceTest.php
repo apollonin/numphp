@@ -40,4 +40,12 @@ class SliceTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('numphp\np_array', $res);
         $this->assertEquals((array) $res, [3, 4, 5]);
     }
+
+    public function testNegativeEnd()
+    {
+        $res = $this->list['-7:-2'];
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+        $this->assertEquals((array) $res, [3, 4, 5, 6, 7]);
+    }
 }

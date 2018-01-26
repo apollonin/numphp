@@ -15,6 +15,7 @@ class StatisticsTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+        $this->listEven = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8]);
     }
 
     public function testSum()
@@ -38,6 +39,13 @@ class StatisticsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($res, 4.5);
     }
 
+    public function testMedianEven()
+    {
+        $res = $this->listEven->median();
+
+        $this->assertEquals($res, 4);
+    }
+
     public function testMin()
     {
         $res = $this->list->min();
@@ -52,5 +60,10 @@ class StatisticsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($res, 9);
     }
 
+    public function testDescribe()
+    {
+        $res = $this->list->describe();
 
+        $this->assertEquals(array_keys((array)$res), ['count', 'max', 'mean', 'median', 'min', 'sum']);
+    }
 }

@@ -45,6 +45,20 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [0, 1, 4, 9, 16, 25,36, 49, 64, 81]);
     }
 
+    public function testMod()
+    {
+        $res = $this->list->mod(2);
+
+        $this->assertEquals((array) $res, [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]);
+    }
+
+    public function testMul()
+    {
+        $res = $this->list->mul(5);
+
+        $this->assertEquals((array) $res, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45]);
+    }
+
     public function testAddVector()
     {
         $res = $this->list->add(new np_array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0]));
@@ -71,5 +85,12 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
         $this->expectException(\Exception::class);
 
         $res = $this->list->add('string');
+    }
+
+    public function testExceptionInvalidOperator()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = $this->list->qqq('string');
     }
 }

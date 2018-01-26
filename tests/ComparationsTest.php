@@ -39,6 +39,13 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [0, 1, 2, 3, 4]);
     }
 
+    public function testSimpleLte()
+    {
+        $res = $this->list[$this->list->lte(5)];
+
+        $this->assertEquals((array) $res, [0, 1, 2, 3, 4, 5]);
+    }
+
     public function testSimpleNeq()
     {
         $res = $this->list[$this->list->neq(5)];
