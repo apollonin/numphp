@@ -38,5 +38,10 @@ class IndexingTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [5, 6, 7, 8, 9]);
     }
 
-    
+    public function testMask()
+    {
+        $res = $this->list->mask('> 5');
+
+        $this->assertEquals((array) $res, [false, false, false, false, false, false, true, true, true, true]);
+    }
 }

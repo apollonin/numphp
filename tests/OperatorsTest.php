@@ -31,6 +31,13 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1]);
     }
 
+    public function testDiv()
+    {
+        $res = $this->list->div(2);
+
+        $this->assertEquals((array) $res, [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5]);
+    }
+
     public function testPow()
     {
         $res = $this->list->pow(2);
@@ -57,5 +64,12 @@ class OperatorsTest extends \PHPUnit_Framework_TestCase
         $res = $this->list->sub(new np_array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10]));
 
         $this->assertEquals((array) $res, [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1]);
+    }
+
+    public function testExceptionInvalidArg()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = $this->list->add('string');
     }
 }

@@ -63,6 +63,17 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals((array) $res, [1, 3, 5, 7, 9, 11, 13]);
     }
 
+    public function testArangeEmptyStop()
+    {
+        $n = 6;
+        $res = Generator::arange($n);
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+        $this->assertEquals(count($res), $n);
+
+        $this->assertEquals((array) $res, [0, 1, 2, 3, 4, 5]);
+    }
+
     public function testFibonacci()
     {
         $n = 6;
