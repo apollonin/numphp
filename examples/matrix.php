@@ -42,4 +42,6 @@ echo 'set elements >= 5 to 999: ' . "\n" . $res6 . "\n\n";
 
 echo 'multiply all to 5: ' . "\n" . $matrix->mul(5) . "\n\n";
 
-//echo 'power > 5 by 2: ' . "\n" . $list[$list->gt(5)]->pow(2) . "\n\n";
+/** Statistics **/
+
+echo 'max element is: ' . "\n" . $matrix->max() . "\n\n";

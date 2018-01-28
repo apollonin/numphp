@@ -88,6 +88,21 @@ trait Indexer
         return $this->getStringOffset($offset);
     }
 
+    public function getArrayCopy()
+    {
+        $result = [];
+
+        foreach ($this as $item)
+        {
+            if ($item instanceof $this)
+                $result[] = $item->getArrayCopy();
+            else
+                return (array) $this;
+        }
+
+        return $result;
+    }
+
     private function getStringOffset($offset)
     {
         $stringIndexer = new StringIndexer($offset);
