@@ -2,14 +2,15 @@
 
 namespace numphp;
 
-use numphp\Operator\Operators;
 use numphp\Indexing\Indexer;
+use numphp\Operator\Operators;
 use numphp\Printing\Printer;
+use numphp\Shaping\Reshaper;
 use numphp\Statistics\Statistics;
 
 class np_array extends \ArrayObject
 {
-    use Indexer, Printer, Statistics;
+    use Indexer, Printer, Statistics, Reshaper;
 
     private $level = 0;
     private $size = null;

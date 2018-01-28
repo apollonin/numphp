@@ -11,15 +11,8 @@ trait Statistics
 
     public function median()
     {
-        // TODO. flatted matrix and calculate median
-        if ($this->dimensions > 1)
-        {
-            // Median for matrix is currently unavailable 
-            return null;
-        }
-            
-        
-        $sorted = (array) $this;
+        // Flatten matrix for median calculation
+        $sorted = $this->dimensions > 1 ? (array) $this->flatten() : (array) $this;
 
         sort($sorted, SORT_NUMERIC);
 
@@ -71,7 +64,13 @@ trait Statistics
 
     public function count()
     {
-        return count(($this->getArrayCopy()), COUNT_RECURSIVE);
+        $count = 0;
+
+        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$count) {
+            $count++;
+        });
+
+        return $count;
     }
 
 

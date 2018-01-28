@@ -103,3 +103,11 @@ echo 'sum is: ' . "\n" . $list->sum() . "\n\n";
 echo 'mean is: ' . "\n" . $list->mean() . "\n\n";
 
 echo 'describe ' . print_r($list->describe(), true) . "\n\n";
+
+/**
+ * Shaping
+ */
+
+echo 'flatten: ' . "\n" . $list->flatten() . "\n\n";
+
+echo 'reshape to [2, 6]: ' . "\n" . $list->reshape([2, 5]) . "\n\n";

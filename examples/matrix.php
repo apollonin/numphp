@@ -46,5 +46,13 @@ echo 'multiply all to 5: ' . "\n" . $matrix->mul(5) . "\n\n";
 
 echo 'max element is: ' . "\n" . $matrix->max() . "\n\n";
 
-
 echo 'describe ' . print_r($matrix->describe(), true) . "\n\n";
+
+
+/**
+ * Shaping
+ */
+
+echo 'flatten: ' . "\n" . $matrix->flatten() . "\n\n";
+
+echo 'reshape to [6, 2]: ' . "\n" . $matrix->reshape([6, 2]) . "\n\n";
