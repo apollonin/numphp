@@ -15,6 +15,8 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+        $this->matrix = new np_array([[1, 2, 3, 10], [4, 55, 6, 11], [7, 8, 9, 12]]);
     }
 
     public function testAddNewItemIndex()
@@ -64,5 +66,18 @@ class SetItemsTest extends \PHPUnit_Framework_TestCase
         $res['1:3'] = 999;
 
         $this->assertEquals((array) $res, [0, 999, 999, 3, 4, 5, 6, 7, 8, 9]);
+    }
+
+
+    /**
+     * Matrix
+     */
+    
+    public function testMatrixChangeItemByCondition()
+    {
+        $res = clone($this->matrix);
+        $res[$res->gte(5)] = 999;
+
+        $this->assertEquals($res, new np_array([[1, 2, 3, 999], [4, 999, 999, 999], [999, 999, 999, 999]]));
     }
 }

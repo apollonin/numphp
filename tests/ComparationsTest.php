@@ -16,6 +16,8 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+        $this->matrix = new np_array([[1, 2, 3, 10], [4, 55, 6, 11], [7, 8, 9, 12]]);
     }
 
     public function testSimpleGt()
@@ -84,5 +86,16 @@ class ComparationsTest extends \PHPUnit_Framework_TestCase
         $res = $this->list[$this->list->eq([0, 5, 6, 7, 4, 3, 5, 6, 7, 8])];
 
         $this->assertEquals((array) $res, [0, 4]);
+    }
+
+    /**
+     * Matrix
+     */
+    
+    public function testMatrixSimpleGt()
+    {
+        $res = $this->matrix[$this->matrix->gt(5)];
+
+        $this->assertEquals((array) $res, [10, 55, 6, 11, 7, 8, 9, 12]);
     }
 }
