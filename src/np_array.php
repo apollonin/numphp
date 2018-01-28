@@ -46,6 +46,15 @@ class np_array extends \ArrayObject
             throw new \Exception("Invalid operator: " . $method);
     }
 
+    public function __clone()
+    {
+        foreach ($this as &$item)
+        {
+            if ($item instanceof $this)
+                $item = clone($item);
+        }
+    }
+
     public function __get($name)
     {
         if ($name == 'shape')

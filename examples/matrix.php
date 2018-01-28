@@ -32,5 +32,14 @@ $res5[[[3], [3], [3]]] = 999;
 echo 'set whole 4th column to 999: ' . "\n" . $res5 . "\n\n";
 
 $res6 = clone($matrix);
-$res6[$res6->gt(5)] = 999;
-echo 'set elements > 5 to 999: ' . "\n" . $res6 . "\n\n";
+$res6[$res6->gte(5)] = 999;
+echo 'set elements >= 5 to 999: ' . "\n" . $res6 . "\n\n";
+
+
+/**
+ * Math operations
+ */
+
+echo 'multiply all to 5: ' . "\n" . $matrix->mul(5) . "\n\n";
+
+//echo 'power > 5 by 2: ' . "\n" . $list[$list->gt(5)]->pow(2) . "\n\n";
