@@ -79,4 +79,9 @@ class StatisticsTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($res, 11);
     }
+
+    public function testMatrixDescribe()
+    {
+        $res = $this->matrix->describe();
+    }
 }
