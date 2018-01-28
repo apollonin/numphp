@@ -54,8 +54,17 @@ composer require apollonin/numphp
   * min
   * sum
   * describe - special method that displays all above values
+* Get dimensional data
+  * shape
+  * dimension
 
 np_array also has classical array behaviour. So you are able to iterate through it as usual.
+
+**matrix**
+
+Matrix - is a special case of arrays. Full support for n-dimensional matrix is on the way. So, currently I can guaratnee 2d matrix support.
+
+You are able to perform all the same operations and comparisons as with arrays. Refer to Matrix section below in usage examples.
 
 **random module**
 
@@ -377,4 +386,101 @@ $result = Generator::formula(function($n){return 2*$n+1;}, 1, 5);
 
 //result
 [3, 5, 7, 9]
+```
+
+
+### Matrix operations
+
+Generally the syntax and features are the same as for arrays
+
+**creation**
+
+```
+$matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
+
+// matrix
+[[0, 1, 2, 3],
+[4, 5, 6, 7],
+[8, 9, 10, 11]]
+```
+
+**indexing**
+
+Indexing is done in respect to X-axis (rows)
+
+```
+$result = $matrix[0];
+
+//result
+[0, 1, 2, 3]
+```
+
+**slicing**
+
+```
+$result = $matrix['1:3'];
+
+//result
+[[4, 5, 6, 7],
+[8, 9, 10, 11]]
+```
+
+**comparisons**
+
+```
+$result = $matrix[$matrix->gt(5)];
+
+//result
+[6, 7, 8, 9, 10, 11]
+```
+
+Keep in mind that 'masking' feature
+
+```
+$mask = $matrix->gt(5);
+
+//mask 
+[[false, false, false, false],
+[false, false, true, true],
+[true, true, true, true]]
+```
+
+**changing values**
+
+```
+$matrix[$matrix->gte(5)] = 999;
+
+//matrix
+[[0, 1, 2, 3],
+[4, 999, 999, 999],
+[999, 999, 999, 999]]
+```
+
+**math operations**
+
+```
+$result = $matrix->mul(5);
+
+//result
+[[0, 5, 10, 15],
+[20, 25, 30, 35],
+[40, 45, 50, 55]]
+```
+
+**get shape of matrix**
+
+```
+$shape = $matrix->shape;
+
+//shape: [rows, cols]
+[3, 4]
+```
+
+And if you just need count of dimensions
+
+```
+$dimensions = $matrix->dimensions;
+
+//dimensions
+2
 ```

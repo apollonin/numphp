@@ -116,17 +116,14 @@ trait Indexer
             {
                 $indexes[] = $this->getIndexes($value);
             }
+            elseif ($value === true || $value === false)
+            {
+                if ($value)
+                    $indexes[] = $index;
+            }
             else
             {
-                if ($value === true || $value === false)
-                {
-                    if ($value)
-                        $indexes[] = $index;
-                }
-                else
-                {
-                    $indexes[] = $value;   
-                }
+                $indexes[] = $value;   
             }
         }
         

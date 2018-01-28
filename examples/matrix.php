@@ -4,7 +4,7 @@ require_once realpath(__DIR__ . '/../vendor') . '/autoload.php';
 
 use numphp\np_array;
 
-$matrix = new np_array([[1, 2, 3, 10], [4, 55, 6, 11], [7, 8, 9, 12]]);
+$matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
 
 echo 'Matrix is: ' . "\n" . $matrix . "\n\n";
 
