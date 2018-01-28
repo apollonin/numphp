@@ -6,11 +6,19 @@ trait Statistics
 {
     public function mean()
     {
-        return array_sum((array) $this) / count($this);
+        return $this->sum() / count($this);
     }
 
     public function median()
     {
+        // TODO. flatted matrix and calculate median
+        if ($this->dimensions > 1)
+        {
+            // Median for matrix is currently unavailable 
+            return null;
+        }
+            
+        
         $sorted = (array) $this;
 
         sort($sorted, SORT_NUMERIC);
@@ -52,7 +60,18 @@ trait Statistics
 
     public function sum()
     {
-        return array_sum((array) $this);
+        $sum = 0;
+
+        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$sum) {
+            $sum += $item;
+        });
+
+        return $sum;
+    }
+
+    public function count()
+    {
+        return count(($this->getArrayCopy()), COUNT_RECURSIVE);
     }
 
 

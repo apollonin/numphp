@@ -45,3 +45,6 @@ echo 'multiply all to 5: ' . "\n" . $matrix->mul(5) . "\n\n";
 /** Statistics **/
 
 echo 'max element is: ' . "\n" . $matrix->max() . "\n\n";
+
+
+echo 'describe ' . print_r($matrix->describe(), true) . "\n\n";
