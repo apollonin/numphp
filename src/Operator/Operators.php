@@ -44,7 +44,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item == $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::eq($item, $arg);
+            else
+                $result[] = $item == $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -56,7 +59,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item > $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::gt($item, $arg);
+            else
+                $result[] = $item > $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -68,7 +74,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item >= $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::gte($item, $arg);
+            else
+                $result[] = $item >= $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -80,7 +89,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item < $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::lt($item, $arg);
+            else
+                $result[] = $item < $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -92,7 +104,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item <= $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::lte($item, $arg);
+            else
+                $result[] = $item <= $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -104,7 +119,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item != $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::neq($item, $arg);
+            else
+                $result[] = $item != $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -121,7 +139,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item + $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::add($item, $arg);
+            else
+                $result[] = $item + $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -133,7 +154,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item / $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::div($item, $arg);
+            else
+                $result[] = $item / $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -145,7 +169,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item % $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::mod($item, $arg);
+            else
+                $result[] = $item % $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -157,7 +184,11 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item * $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::mul($item, $arg);
+            else
+                $result[] = $item * $arg[$isSingle?0:$index];
+            
 
         return $result;
     }
@@ -169,7 +200,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item ** $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::pow($item, $arg);
+            else
+                $result[] = $item ** $arg[$isSingle?0:$index];
 
         return $result;
     }
@@ -181,7 +215,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item - $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result[] = self::sub($item, $arg);
+            else
+                $result[] = $item - $arg[$isSingle?0:$index];
 
         return $result;
     }

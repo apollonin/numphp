@@ -20,4 +20,11 @@ class GeneralTest extends \PHPUnit_Framework_TestCase
 
         $res = new np_array('string');
     }
+
+    public function testExceptionPrivateProperty()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = (new np_array([1]))->size;
+    }
 }
