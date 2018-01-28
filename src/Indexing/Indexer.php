@@ -16,8 +16,18 @@ trait Indexer
         // masking
         if (is_array($offset) || $offset instanceof $this)
         {
-            foreach ($this->getIndexes($offset) as $index)
-                parent::offsetSet($index, $value);
+            foreach ($this->getIndexes($offset) as $level => $offsets)
+            {
+                if (is_array($offsets))
+                {
+                    foreach ($offsets as $index)
+                        $this[$level][$index] = $value;
+                }
+                else
+                {
+                    parent::offsetSet($offsets, $value);
+                }
+            }
 
             return;
         }
@@ -39,15 +49,25 @@ trait Indexer
 
     public function offsetGet($offset) 
     {
-        // masking
+        // multiply indexes or masking
         if (is_array($offset) || $offset instanceof $this)
         {
             $result = [];
 
-            foreach ($this->getIndexes($offset) as $index)
-                $result[] = parent::offsetGet($index);
+            foreach ($this->getIndexes($offset) as $level => $offsets)
+            {
+                if (is_array($offsets))
+                {
+                    foreach ($offsets as $index)
+                        $result[] = $this[$level][$index];
+                }
+                else
+                {
+                    $result[] = $this[$offsets];
+                }
+            }
 
-            return new self($result);
+            return new self($result);   
         }
 
         // slicing
@@ -89,15 +109,25 @@ trait Indexer
         if (empty($offset))
             return [];
 
-        // offset is an array of indexes already
-        if (!is_bool($offset[0]))
-            return $offset;
-
         // convert mask array to array of indexes
         foreach ($offset as $index => $value)
         {
-            if ($value)
-                $indexes[] = $index;
+            if ($value instanceof $this)
+            {
+                $indexes[] = $this->getIndexes($value);
+            }
+            else
+            {
+                if ($value === true || $value === false)
+                {
+                    if ($value)
+                        $indexes[] = $index;
+                }
+                else
+                {
+                    $indexes[] = $value;   
+                }
+            }
         }
         
         return $indexes;

@@ -56,7 +56,10 @@ abstract class Operators
         $result = [];
 
         foreach ($data as $index => $item)
-            $result[] = $item > $arg[$isSingle?0:$index];
+            if ($item instanceof np_array)
+                $result [] = self::gt($item, $arg);
+            else
+                $result[] = $item > $arg[$isSingle?0:$index];
 
         return $result;
     }

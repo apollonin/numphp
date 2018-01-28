@@ -1,6 +1,6 @@
 <?php
 
-require_once realpath(__DIR__ . '/vendor') . '/autoload.php';
+require_once realpath(__DIR__ . '/../vendor') . '/autoload.php';
 
 use numphp\np_array;
 use numphp\Operator\Bitwise;
@@ -18,12 +18,17 @@ foreach ($list as $item) {
 
 echo "\n\n";
 
+echo 'Shape is: ' . "\n" . '(' . implode(', ', $list->shape) . ')' . "\n\n";
+
 /**
  * Indexing
  */
 
 echo 'mask >= 5' . "\n" . $list->gte(5) . "\n\n";
 echo 'mask >= 5 (explicit)' . "\n" . $list->mask('> 5') . "\n\n";
+
+echo 'list >= 5' . "\n" . $list[$list->gte(5)] . "\n\n";
+
 
 $res1 = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 echo '>= 5 and < 8: ' . "\n" . $res1 . "\n\n";
@@ -81,15 +86,6 @@ echo 'ones array with size of 5: ' . "\n" . Generator::ones(5) . "\n\n";
 echo 'arange: ' . "\n" . Generator::arange(1, 15) . "\n\n";
 
 echo 'formula 2n+1 from 1 to 5' . "\n" . Generator::formula(function($n){return 2*$n+1;}, 1, 5) . "\n\n";
-
-
-/**
- * Matrix
- */
-
-$matrix = new np_array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
-
-echo $matrix;
 
 
 /** Slicing **/

@@ -13,9 +13,21 @@ trait Printer
      */
     public function __toString()
     {
+        $result = $this->formatValues($this);
+
+        if ($this->dimensions > 1)
+            $glue = $this->level ? ", " : ",\n";
+        else
+            $glue = ", ";
+
+        return sprintf("[%s]", implode($glue, $result));
+    }
+
+    private function formatValues(np_array $data)
+    {
         $result = [];
 
-        foreach ($this as $item) {
+        foreach ($data as $item) {
             if ($item === true)
                 $item = 'true';
             elseif($item === false)
@@ -25,6 +37,7 @@ trait Printer
 
             $result[] = $item;
         }
-        return sprintf("[%s]", implode(", ", $result));
+
+        return $result;
     }
 }
