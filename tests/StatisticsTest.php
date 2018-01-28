@@ -16,6 +16,8 @@ class StatisticsTest extends \PHPUnit_Framework_TestCase
     {
         $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
         $this->listEven = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8]);
+
+        $this->matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
     }
 
     public function testSum()
@@ -65,5 +67,16 @@ class StatisticsTest extends \PHPUnit_Framework_TestCase
         $res = $this->list->describe();
 
         $this->assertEquals(array_keys((array)$res), ['count', 'max', 'mean', 'median', 'min', 'sum']);
+    }
+
+    /**
+     * Matrix
+     */
+    
+    public function testMatrixMax()
+    {
+        $res = $this->matrix->max();
+
+        $this->assertEquals($res, 11);
     }
 }

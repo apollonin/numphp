@@ -28,12 +28,26 @@ trait Statistics
 
     public function min()
     {
-        return min((array) $this);
+        $min = INF;
+
+        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$min) {
+            if ($item < $min)
+                $min = $item;
+        });
+
+        return $min;
     }
 
     public function max()
     {
-        return max((array) $this);
+        $max = -INF;
+
+        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$max) {
+            if ($item > $max)
+                $max = $item;
+        });
+
+        return $max;
     }
 
     public function sum()
