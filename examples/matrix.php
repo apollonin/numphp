@@ -3,6 +3,7 @@
 require_once realpath(__DIR__ . '/../vendor') . '/autoload.php';
 
 use numphp\np_array;
+use numphp\Generator\Generator;
 
 $matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
 
@@ -35,6 +36,12 @@ $res6 = clone($matrix);
 $res6[$res6->gte(5)] = 999;
 echo 'set elements >= 5 to 999: ' . "\n" . $res6 . "\n\n";
 
+/** Generator **/
+
+echo 'zeros array with size of [5, 2]: ' . "\n" . Generator::zeros([5, 2]) . "\n\n";
+echo 'ones array with size of [5, 3]: ' . "\n" . Generator::ones([5, 3]) . "\n\n";
+
+echo 'arange with reshaping to [2, 7]: ' . "\n" . Generator::arange(1, 15)->reshape([2, 7]) . "\n\n";
 
 /**
  * Math operations
