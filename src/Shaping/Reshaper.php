@@ -23,7 +23,7 @@ trait Reshaper
 
     /**
      * Change shape of the array
-     * TODO. improve solution to use recursive algo for any size dimentions
+     * TODO. improve solution to use recursive algo for any size dimensions
      * @param  array  $size 
      * @return np_array       
      */
@@ -49,6 +49,25 @@ trait Reshaper
         }
 
         return new np_array($result);
+    }
+
+    public function diagonal($offset = 0)
+    {
+        if ($this->dimensions < 2)
+            throw new \Exception("Diagonal requires an array of at least two dimensions");
+
+        $result = [];
+
+        foreach ($this as $level => $row)
+        {
+            $index = $level + $offset;
             
+            if (!isset($row[$index]))
+                break;
+
+            $result[] = $row[$index];
+        }
+
+        return new np_array($result);
     }
 }
