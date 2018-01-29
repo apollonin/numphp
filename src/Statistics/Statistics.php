@@ -6,7 +6,7 @@ trait Statistics
 {
     public function mean()
     {
-        return $this->sum() / count($this);
+        return $this->sum() / $this->countAll();
     }
 
     public function median()
@@ -62,7 +62,7 @@ trait Statistics
         return $sum;
     }
 
-    public function count()
+    public function countAll()
     {
         $count = 0;
 
@@ -77,7 +77,7 @@ trait Statistics
     public function describe()
     {
         return [
-            'count'  => count($this),
+            'count'  => $this->countAll(),
             'max'    => $this->max(),
             'mean'   => $this->mean(),
             'median' => $this->median(),

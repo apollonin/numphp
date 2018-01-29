@@ -105,7 +105,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $res = Generator::ones([5, 2]);
 
         $this->assertInstanceOf('numphp\np_array', $res);
-        $this->assertEquals(count($res), 10);
+        $this->assertEquals($res->countAll(), 10);
 
         array_walk_recursive(($res->getArrayCopy()), function($item){
             $this->assertEquals(1, $item);
@@ -117,7 +117,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $res = Generator::zeros([5, 3]);
 
         $this->assertInstanceOf('numphp\np_array', $res);
-        $this->assertEquals(count($res), 15);
+        $this->assertEquals($res->countAll(), 15);
 
         array_walk_recursive(($res->getArrayCopy()), function($item){
             $this->assertEquals(0, $item);
@@ -129,7 +129,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $res = Generator::full([7, 2], 999);
 
         $this->assertInstanceOf('numphp\np_array', $res);
-        $this->assertEquals(count($res), 14);
+        $this->assertEquals($res->countAll(), 14);
 
         array_walk_recursive(($res->getArrayCopy()), function($item){
             $this->assertEquals(999, $item);
