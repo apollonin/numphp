@@ -40,4 +40,25 @@ class ShapingTest extends \PHPUnit_Framework_TestCase
         
         $res = $this->matrix->reshape([1, 2]);
     }
+
+    public function testDiagonalInvalidShape()
+    {
+        $this->expectException(\Exception::class);
+        
+        $res = $this->list->diagonal();
+    }
+
+    public function testDiagonal()
+    {
+        $res = $this->matrix->diagonal();
+
+        $this->assertEquals($res->getArrayCopy(), [0, 5, 10]);
+    }
+
+    public function testDiagonalWithOffset()
+    {
+        $res = $this->matrix->diagonal(2);
+
+        $this->assertEquals($res->getArrayCopy(), [2, 7]);
+    }
 }

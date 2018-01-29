@@ -126,7 +126,7 @@ abstract class Generator
             $vector = new np_array($vector);
 
         if ($vector->dimensions > 1)
-            throw new Exception("Except only 1-D array");
+            throw new \Exception("Except only 1-D array");
 
         $size = count($vector);
         $result = static::zeros([$size, $size]);
