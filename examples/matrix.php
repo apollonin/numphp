@@ -43,6 +43,8 @@ echo 'ones array with size of [5, 3]: ' . "\n" . Generator::ones([5, 3]) . "\n\n
 
 echo 'arange with reshaping to [2, 7]: ' . "\n" . Generator::arange(1, 15)->reshape([2, 7]) . "\n\n";
 
+echo 'matrix with [5, 3, 1] diagonal: ' . "\n" . Generator::diagonal([5, 3, 1]) . "\n\n";
+
 /**
  * Math operations
  */
@@ -63,3 +65,5 @@ echo 'describe ' . print_r($matrix->describe(), true) . "\n\n";
 echo 'flatten: ' . "\n" . $matrix->flatten() . "\n\n";
 
 echo 'reshape to [6, 2]: ' . "\n" . $matrix->reshape([6, 2]) . "\n\n";
+
+echo 'diagonal is: ' . "\n" . $matrix->diagonal() . "\n\n";

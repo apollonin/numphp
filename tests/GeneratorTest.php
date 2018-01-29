@@ -135,4 +135,33 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals(999, $item);
         });
     }
+
+    public function testMatrixFromDiagonal()
+    {
+        $res = Generator::diagonal([5, 3, 1]);
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+
+        $this->assertEquals(5, $res[0][0]);
+        $this->assertEquals(3, $res[1][1]);
+        $this->assertEquals(1, $res[2][2]);
+    }
+
+    public function testMatrixFromDiagonalNpArray()
+    {
+        $res = Generator::diagonal(new np_array([5, 3, 1]));
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+
+        $this->assertEquals(5, $res[0][0]);
+        $this->assertEquals(3, $res[1][1]);
+        $this->assertEquals(1, $res[2][2]);
+    }
+
+    public function testMatrixFromDiagonalExceptionInvalidDimension()
+    {
+        $this->expectException(\Exception::class);
+
+        $res = Generator::diagonal([[1,2], [3,4]]);
+    }
 }

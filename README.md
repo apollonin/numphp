@@ -392,6 +392,17 @@ $result = Generator::formula(function($n){return 2*$n+1;}, 1, 5);
 [3, 5, 7, 9]
 ```
 
+**generate matrix with given diagonal**
+
+```
+$matrix = Generator::diagonal([5, 3, 1]);
+
+// matrix
+[[5, 0, 0],
+[0, 3, 0],
+[0, 0, 1]]
+```
+
 
 ### Matrix operations
 
@@ -487,6 +498,27 @@ $dimensions = $matrix->dimensions;
 
 //dimensions
 2
+```
+
+
+**diagonal**
+
+```
+$result = $matrix->diagonal();
+
+//result 
+[0, 5, 10]
+
+```
+
+or you can set offset for diagonal
+
+```
+$result = $matrix->diagonal(2);
+
+//result 
+[2, 7]
+
 ```
 
 ## Changing dimensions

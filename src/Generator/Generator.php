@@ -118,7 +118,26 @@ abstract class Generator
         }
 
         return new np_array($result);
+    }
 
+    public static function diagonal($vector)
+    {
+        if (is_array($vector))
+            $vector = new np_array($vector);
+
+        if ($vector->dimensions > 1)
+            throw new \Exception("Except only 1-D array");
+
+        $size = count($vector);
+        $result = static::zeros([$size, $size]);
+
+        for ($i=0; $i < $size; $i++)
+        { 
+            $result[$i][$i] = $vector[$i];
+        }
+
+        return $result;
+            
     }
 }
 
