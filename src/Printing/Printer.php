@@ -17,8 +17,8 @@ trait Printer
         if ($this->level == 0)
         {
             $max = $this->max();
-            $this->_max = $max;
-            $this->subObjectsWalk(function($item) use ($max){$item->_max = $max;});
+            $this->_max_all = $max;
+            $this->subObjectsWalk(function($item) use ($max){$item->_max_all = $max;});
         }
 
         $result = $this->formatValues($this);
@@ -43,7 +43,7 @@ trait Printer
             elseif (is_null($item))
                 $item = 'null';
 
-            $result[] = str_pad($item, strlen($this->_max), ' ', STR_PAD_LEFT);
+            $result[] = str_pad($item, strlen($this->_max_all), ' ', STR_PAD_LEFT);
         }
 
         return $result;
