@@ -66,6 +66,10 @@ Matrix - is a special case of arrays. Full support for n-dimensional matrix is o
 
 You are able to perform all the same operations and comparisons as with arrays. Refer to Matrix section below in usage examples.
 
+**dimensional manipulation**
+
+TYou are able to change dimensions for existed array or matrix. Use `flatten` or `reshape` methods.
+
 **random module**
 
 Numphp also provides convenient ways to generate new np_arrays and populate them with random values. Available methods are
@@ -483,4 +487,33 @@ $dimensions = $matrix->dimensions;
 
 //dimensions
 2
+```
+
+## Changing dimensions
+
+**flatten matrix**
+
+You can get 1-D array from matrix.
+
+```
+$result = $matrix->flatten();
+
+//result
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+```
+
+**Reshaping**
+
+You also can change current shape of matrix to any desired.
+
+```
+$result = $matrix->reshape([6, 2]);
+
+//result
+[[0, 1],
+[2, 3],
+[4, 5],
+[6, 7],
+[8, 9],
+[10, 11]]
 ```
