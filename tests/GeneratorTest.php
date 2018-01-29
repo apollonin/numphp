@@ -35,14 +35,14 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
 
     public function testFull()
     {
-        $res = Generator::full(15, 9999);
+        $res = Generator::full(15, 999);
 
         $this->assertInstanceOf('numphp\np_array', $res);
         $this->assertEquals(count($res), 15);
 
         foreach ($res as $item)
         {
-            $this->assertEquals(9999, $item);
+            $this->assertEquals(999, $item);
         }
     }
 
@@ -94,5 +94,45 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(count($res), $n);
 
         $this->assertEquals((array) $res, [1, 3, 5, 7, 9, 11]);
+    }
+
+    /**
+     * Matrix
+     */
+    
+    public function testMartrixOnes()
+    {
+        $res = Generator::ones([5, 2]);
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+        $this->assertEquals(count($res), 10);
+
+        array_walk_recursive(($res->getArrayCopy()), function($item){
+            $this->assertEquals(1, $item);
+        });
+    }
+
+    public function testMartrixZeros()
+    {
+        $res = Generator::zeros([5, 3]);
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+        $this->assertEquals(count($res), 15);
+
+        array_walk_recursive(($res->getArrayCopy()), function($item){
+            $this->assertEquals(0, $item);
+        });
+    }
+
+    public function testMartrixFull()
+    {
+        $res = Generator::full([7, 2], 999);
+
+        $this->assertInstanceOf('numphp\np_array', $res);
+        $this->assertEquals(count($res), 14);
+
+        array_walk_recursive(($res->getArrayCopy()), function($item){
+            $this->assertEquals(999, $item);
+        });
     }
 }
