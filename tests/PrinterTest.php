@@ -31,6 +31,6 @@ class PrinterTest extends \PHPUnit_Framework_TestCase
 
     public function testMatrix()
     {
-        $this->assertEquals((string) $this->matrix, "[[0, 1, 2, 3],\n[4, 5, 6, 7],\n[8, 9, 10, 11]]");
+        $this->assertEquals((string) $this->matrix, "[[ 0,  1,  2,  3],\n [ 4,  5,  6,  7],\n [ 8,  9, 10, 11]]");
     }
 }
