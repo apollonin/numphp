@@ -7,22 +7,52 @@ use numphp\Generator\Fibonacci;
 
 abstract class Generator
 {
-    public static function ones($size)
+    public static function ones($shape)
     {
-        return new np_array(array_fill(0, $size, 1));
+        if (is_array($shape))
+        {
+            $result = [];
+
+            foreach (range(1, $shape[0]) as $row)
+                $result[] = array_fill(0, $shape[1], 1);
+
+            return new np_array($result);
+        }
+
+        return new np_array(array_fill(0, $shape, 1));
     }
 
-    public static function zeros($size)
+    public static function zeros($shape)
     {
-        return new np_array(array_fill(0, $size, 0));   
+        if (is_array($shape))
+        {
+            $result = [];
+
+            foreach (range(1, $shape[0]) as $row)
+                $result[] = array_fill(0, $shape[1], 0);
+
+            return new np_array($result);
+        }
+
+        return new np_array(array_fill(0, $shape, 0));
     }
 
-    public static function full($size, $fill_value)
+    public static function full($shape, $fill_value)
     {
         if (!is_numeric($fill_value))
             throw new \Exception("Numphp supports only number arrays");
-            
-        return new np_array(array_fill(0, $size, $fill_value));
+
+        if (is_array($shape))
+        {
+            $result = [];
+
+            foreach (range(1, $shape[0]) as $row)
+                $result[] = array_fill(0, $shape[1], $fill_value);
+
+            return new np_array($result);
+        }
+
+        return new np_array(array_fill(0, $shape, $fill_value));
     }
 
     public static function arange($start, $stop=0, $step=1)
