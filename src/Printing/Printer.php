@@ -13,10 +13,18 @@ trait Printer
      */
     public function __toString()
     {
+        // calculate max value for whole array only once
+        if ($this->level == 0)
+        {
+            $max = $this->max();
+            $this->_max = $max;
+            $this->subObjectsWalk(function($item) use ($max){$item->_max = $max;});
+        }
+
         $result = $this->formatValues($this);
 
         if ($this->dimensions > 1)
-            $glue = $this->level ? ", " : ",\n";
+            $glue = $this->level ? ", " : ",\n ";
         else
             $glue = ", ";
 
@@ -35,9 +43,24 @@ trait Printer
             elseif (is_null($item))
                 $item = 'null';
 
-            $result[] = $item;
+            $result[] = str_pad($item, strlen($this->_max), ' ', STR_PAD_LEFT);
         }
 
         return $result;
+    }
+
+    /**
+     * Walks through all sub objects and apply $f to each of them
+     */
+    private function subObjectsWalk(Callable $f)
+    {
+        foreach ($this as $item)
+        {
+            if ($item instanceof $this)
+            {
+                $f($item);
+                $item->subObjectsWalk($f);
+            }
+        }
     }
 }
