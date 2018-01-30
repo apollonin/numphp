@@ -49,7 +49,9 @@ echo 'matrix with [5, 3, 1] diagonal: ' . "\n" . Generator::diagonal([5, 3, 1]) 
  * Math operations
  */
 
-echo 'multiply all to 5: ' . "\n" . $matrix->mul(5) . "\n\n";
+echo 'multiply to 5: ' . "\n" . $matrix->mul(5) . "\n\n";
+echo 'add [999, 999, 999, 999]: ' . "\n" . $matrix->add([999, 999, 999, 999]) . "\n\n";
+echo 'add matrix of ones: ' . "\n" . $matrix->add(Generator::ones([3, 4])) . "\n\n";
 
 /** Statistics **/
 

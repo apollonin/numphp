@@ -80,10 +80,13 @@ class np_array extends \ArrayObject
     {
         $shape[] = count($this);
 
-        if (isset($this[0]) && $this[0] instanceof np_array)
-            $shape[] = $this[0]->shape()[0];
-        else
-            return [$this->size];
+        foreach ($this as $item)
+        {
+            if ($item instanceof np_array)
+                $shape[] = $this[0]->shape()[0];
+            else
+                return [$this->size];
+        }
 
         return $shape;
     }
