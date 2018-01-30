@@ -28,9 +28,9 @@ composer require apollonin/numphp
 * get item by index
 * get items by array of indexes
 * get items by condition
-  * eq, gt, gte, lt, lte, neq
-* get items by conditions
-  * b_and, b_or
+  * eq, gt, gte, lt, lte, neq - equals, greater than, and so on
+* get items by complex conditions
+  * b_and, b_or - bitwise AND and OR
 * set items values according to conditions, indexes or slices
 * apply math operations to whole array
   * mul, div, add, sub, pow, mod
@@ -52,7 +52,7 @@ You are able to perform all the same operations and comparisons as with arrays. 
 
 **dimensional manipulation**
 
-TYou are able to change dimensions for existed array or matrix. Use `flatten` or `reshape` methods.
+You are able to change dimensions for existed array or matrix. Use `flatten` or `reshape` methods.
 
 **random module**
 
@@ -398,9 +398,9 @@ Generally the syntax and features are the same as for arrays
 $matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
 
 // matrix
-[[0, 1, 2, 3],
-[4, 5, 6, 7],
-[8, 9, 10, 11]]
+[[ 0,  1,  2,  3],
+ [ 4,  5,  6,  7],
+ [ 8,  9, 10, 11]]
 ```
 
 **indexing**
@@ -420,8 +420,8 @@ $result = $matrix[0];
 $result = $matrix['1:3'];
 
 //result
-[[4, 5, 6, 7],
-[8, 9, 10, 11]]
+[[ 4,  5,  6,  7],
+ [ 8,  9, 10, 11]]
 ```
 
 **comparisons**
@@ -433,7 +433,7 @@ $result = $matrix[$matrix->gt(5)];
 [6, 7, 8, 9, 10, 11]
 ```
 
-Keep in mind that 'masking' feature
+Keep in mind 'masking' feature
 
 ```
 $mask = $matrix->gt(5);
@@ -450,9 +450,9 @@ $mask = $matrix->gt(5);
 $matrix[$matrix->gte(5)] = 999;
 
 //matrix
-[[0, 1, 2, 3],
-[4, 999, 999, 999],
-[999, 999, 999, 999]]
+[[  0,   1,   2,   3],
+ [  4, 999, 999, 999],
+ [999, 999, 999, 999]]
 ```
 
 **math operations**
@@ -461,9 +461,9 @@ $matrix[$matrix->gte(5)] = 999;
 $result = $matrix->mul(5);
 
 //result
-[[0, 5, 10, 15],
-[20, 25, 30, 35],
-[40, 45, 50, 55]]
+[[ 0,  5, 10, 15],
+ [20, 25, 30, 35],
+ [40, 45, 50, 55]]
 ```
 
 **get shape of matrix**
@@ -526,10 +526,10 @@ You also can change current shape of matrix to any desired.
 $result = $matrix->reshape([6, 2]);
 
 //result
-[[0, 1],
-[2, 3],
-[4, 5],
-[6, 7],
-[8, 9],
-[10, 11]]
+[[ 0,  1],
+ [ 2,  3],
+ [ 4,  5],
+ [ 6,  7],
+ [ 8,  9],
+ [10, 11]]
 ```
