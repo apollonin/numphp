@@ -28,31 +28,15 @@ composer require apollonin/numphp
 * get item by index
 * get items by array of indexes
 * get items by condition
-  * eq - equals
-  * gt - greater than
-  * gte - greater than or equals
-  * lt - less than
-  * lte - less than or equals
-  * neq - not equals
+  * eq, gt, gte, lt, lte, neq
 * get items by conditions
-  * b_and - logical AND
-  * b_or - logical OR
+  * b_and, b_or
 * set items values according to conditions, indexes or slices
 * apply math operations to whole array
-  * mul - multiply
-  * div - divide
-  * add - add 
-  * sub - subtract
-  * pow - power
-  * mod - mod
+  * mul, div, add, sub, pow, mod
 * get slice of array
 * get statistical values from array
-  * count
-  * max
-  * mean
-  * median
-  * min
-  * sum
+  * count, max, mean, median, min, sum
   * describe - special method that displays all above values
 * Get dimensional data
   * shape
