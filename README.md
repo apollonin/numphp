@@ -8,13 +8,13 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/9cda6d0e7e7967900ff2/maintainability)](https://codeclimate.com/github/apollonin/numphp/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/9cda6d0e7e7967900ff2/test_coverage)](https://codeclimate.com/github/apollonin/numphp/test_coverage)
 
-Numphp is a library for manipulating numbers. If you have an array of numbers, numphp gives you an ability to do wide range of useful operations.
+Numphp is a library for number manipulations. If you have an array of numbers, numphp gives you an ability to perform a wide range of useful operations.
 
 Contributions are highly appreciated.
 
 ## Installation
 
-### Via composer
+### With composer
 
 ```
 composer require apollonin/numphp
@@ -23,7 +23,7 @@ composer require apollonin/numphp
 
 ## Available features
 
-**arrays**
+**Arrays**
 
 * get item by index
 * get items by array of indexes
@@ -44,17 +44,17 @@ composer require apollonin/numphp
 
 np_array also has classical array behaviour. So you are able to iterate through it as usual.
 
-**matrix**
+**Matrix**
 
-Matrix - is a special case of arrays. Full support for n-dimensional matrix is on the way. So, currently I can guaratnee 2d matrix support.
+Matrix is a special case of arrays. At the moment, we only support 2d matrices. Full support for n-dimensional matrices is on the way. 
 
-You are able to perform all the same operations and comparisons as with arrays. Refer to Matrix section below in usage examples.
+You can perform all the same operations and comparisons as with arrays. Refer to Matrix section below in usage examples.
 
-**dimensional manipulation**
+**Dimensional Manipulation**
 
 You are able to change dimensions for existed array or matrix. Use `flatten` or `reshape` methods.
 
-**random module**
+**Random Module**
 
 Numphp also provides convenient ways to generate new np_arrays and populate them with random values. Available methods are
 
@@ -63,7 +63,7 @@ Numphp also provides convenient ways to generate new np_arrays and populate them
 
 If `size` parameter is given, returns np_array with appropriate elements. Otherwise, it returns single random value.
 
-**generators**
+**Generators**
 
 For quick stub array creation you may use these convenient predefined methods
 
@@ -75,7 +75,7 @@ For quick stub array creation you may use these convenient predefined methods
 * formula - returns sequence of numbers, based on provided formula
 
 
-## Usage examples
+## Usage Examples
 
 ### Indexing
 
@@ -84,7 +84,7 @@ For quick stub array creation you may use these convenient predefined methods
 $list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 ```
 
-**get items by their indexes**
+**Get items by their indexes**
 
 ```php
 $result = $list[[2,3]];
@@ -102,7 +102,7 @@ $result = $list[1];
 1
 ```
 
-**get items by condition**
+**Get items by condition**
 
 ```php
 $result = $list[$list->gt(5)];
@@ -118,9 +118,9 @@ You may also access index by string representations of comparison.
 $result = $list[$list['> 5']];
 ```
 
-> Important note about conditional indexing
+*Important note about conditional indexing: conditional operator returns masking array:*
 
-Conditional operator returns masking array
+
 
 ```php
   $mask = $list->gt(5);
@@ -145,7 +145,7 @@ $result = $list[$list->gt([5, 6, 7, 8, 9, 3, 4, 5, 6, 7])];
 ```
 
 
-**get items by conditions**
+**Get items by conditions**
 
 *b_and* - "bitwise" and
 
@@ -156,7 +156,7 @@ $resuilt = $list[Bitwise::b_and($list->gte(5), $list->lt(8))];
 [5, 6, 7]
 ```
 
-**array-like behaviour**
+**Array-like behaviour**
 
 You may also iterate your np_array object as usual
 
@@ -215,9 +215,9 @@ $result = $list['-7:6'];
 ```
 
 
-### Set items values
+### Set item values
 
-**set items by indexes**
+**Set items by indexes**
 
 ```php
 $result = clone($list);
@@ -227,7 +227,7 @@ $result[[2,3]] = 999;
 [0, 1, 999, 999, 4, 5, 6, 7, 8, 9]
 ```
 
-**set items by conditions**
+**Set items by conditions**
 
 ```php
 $result = clone($list);
@@ -237,7 +237,7 @@ $result[$result->gte(5)] = 999;
 [0, 1, 2, 3, 4, 999, 999, 999, 999, 999]
 ```
 
-**set items by slice**
+**Set items by slice**
 
 ```php
 $result = clone($list);
@@ -247,7 +247,7 @@ $result['1:3'] = 999;
 [0, 999, 999, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-**adding new items**
+**Adding new items**
 
 Of course, you may add new items as usual
 
@@ -292,7 +292,7 @@ $result = $list->add([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 ### Random module
 
-**create array with random floats**
+**Create array with random floats**
 
 ```php
 use numphp\Random\Random;
@@ -304,7 +304,7 @@ $result = Random::rand(5)
 
 ```
 
-**array with random integers**
+**Array with random integers**
 
 ```php
 use numphp\Random\Random;
@@ -340,7 +340,7 @@ $result = Generator::full(5, 999);
 [999, 999, 999, 999, 999]
 ```
 
-**create array within a range and given interval**
+**Create array within a range and given interval**
 
 ```php
 use numphp\Generator\Generator;
@@ -351,7 +351,7 @@ $result = Generator::arange(1, 15, 2);
 [1, 3, 5, 7, 9, 11, 13]
 ```
 
-**generate N [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) numbers**
+**Generate N [Fibonacci](https://en.wikipedia.org/wiki/Fibonacci_number) numbers**
 
 ```php
 use numphp\Generator\Generator;
@@ -363,7 +363,7 @@ $result = Generator::fib(6);
 ```
 
 
-**generate numbers according to formula**
+**Generate numbers according to formula**
 
 Provide [callable](http://php.net/manual/en/language.types.callable.php) as a first argument. It must return value, that will be used in sequence.
 
@@ -376,7 +376,7 @@ $result = Generator::formula(function($n){return 2*$n+1;}, 1, 5);
 [3, 5, 7, 9]
 ```
 
-**generate matrix with given diagonal**
+**Generate matrix with given diagonal**
 
 ```
 $matrix = Generator::diagonal([5, 3, 1]);
@@ -392,7 +392,7 @@ $matrix = Generator::diagonal([5, 3, 1]);
 
 Generally the syntax and features are the same as for arrays
 
-**creation**
+**Creation**
 
 ```
 $matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
@@ -403,7 +403,7 @@ $matrix = new np_array([[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11]]);
  [ 8,  9, 10, 11]]
 ```
 
-**indexing**
+**Indexing**
 
 Indexing is done in respect to X-axis (rows)
 
@@ -414,7 +414,7 @@ $result = $matrix[0];
 [0, 1, 2, 3]
 ```
 
-**slicing**
+**Slicing**
 
 ```
 $result = $matrix['1:3'];
@@ -424,7 +424,7 @@ $result = $matrix['1:3'];
  [ 8,  9, 10, 11]]
 ```
 
-**comparisons**
+**Comparisons**
 
 ```
 $result = $matrix[$matrix->gt(5)];
@@ -444,7 +444,7 @@ $mask = $matrix->gt(5);
 [true, true, true, true]]
 ```
 
-**changing values**
+**Changing values**
 
 ```
 $matrix[$matrix->gte(5)] = 999;
@@ -455,7 +455,7 @@ $matrix[$matrix->gte(5)] = 999;
  [999, 999, 999, 999]]
 ```
 
-**math operations**
+**Math operations**
 
 ```
 $result = $matrix->mul(5);
@@ -466,7 +466,7 @@ $result = $matrix->mul(5);
  [40, 45, 50, 55]]
 ```
 
-**get shape of matrix**
+**Get shape of matrix**
 
 ```
 $shape = $matrix->shape;
@@ -485,7 +485,7 @@ $dimensions = $matrix->dimensions;
 ```
 
 
-**diagonal**
+**Diagonal**
 
 ```
 $result = $matrix->diagonal();
@@ -507,7 +507,7 @@ $result = $matrix->diagonal(2);
 
 ## Changing dimensions
 
-**flatten matrix**
+**Flatten matrix**
 
 You can get 1-D array from matrix.
 
