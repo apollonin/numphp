@@ -5,7 +5,7 @@ namespace Tests;
 use numphp\np_array;
 use numphp\Shaping\Reshaper;
 
-class ShapingTest extends \PHPUnit_Framework_TestCase
+class ShapingTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var np_array

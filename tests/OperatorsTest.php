@@ -4,7 +4,7 @@ namespace Tests;
 
 use numphp\np_array;
 
-class OperatorsTest extends \PHPUnit_Framework_TestCase
+class OperatorsTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

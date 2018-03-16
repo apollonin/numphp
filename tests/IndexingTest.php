@@ -4,7 +4,7 @@ namespace Tests;
 
 use numphp\np_array;
 
-class IndexingTest extends \PHPUnit_Framework_TestCase
+class IndexingTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

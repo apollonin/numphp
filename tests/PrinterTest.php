@@ -4,7 +4,7 @@ namespace Tests;
 
 use numphp\np_array;
 
-class PrinterTest extends \PHPUnit_Framework_TestCase
+class PrinterTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var np_array

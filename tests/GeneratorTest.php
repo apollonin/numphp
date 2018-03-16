@@ -5,7 +5,7 @@ namespace Tests;
 use numphp\np_array;
 use numphp\Generator\Generator;
 
-class GeneratorTest extends \PHPUnit_Framework_TestCase
+class GeneratorTest extends \PHPUnit\Framework\TestCase
 {
     public function testOnes()
     {

@@ -4,7 +4,7 @@ namespace Tests;
 
 use numphp\np_array;
 
-class GeneralTest extends \PHPUnit_Framework_TestCase
+class GeneralTest extends \PHPUnit\Framework\TestCase
 {
     public function testCreateArray()
     {
