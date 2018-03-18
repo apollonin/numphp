@@ -5,7 +5,7 @@ namespace Tests;
 use numphp\np_array;
 use numphp\Statistics\Statistics;
 
-class StatisticsTest extends \PHPUnit_Framework_TestCase
+class StatisticsTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var np_array

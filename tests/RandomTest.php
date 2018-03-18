@@ -5,7 +5,7 @@ namespace Tests;
 use numphp\np_array;
 use numphp\Random\Random;
 
-class RandomTest extends \PHPUnit_Framework_TestCase
+class RandomTest extends \PHPUnit\Framework\TestCase
 {
     public function testSimpleRandom()
     {

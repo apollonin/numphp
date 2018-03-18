@@ -5,7 +5,7 @@ namespace Tests;
 use numphp\np_array;
 use numphp\Operator\Bitwise;
 
-class ComparationsTest extends \PHPUnit_Framework_TestCase
+class ComparationsTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

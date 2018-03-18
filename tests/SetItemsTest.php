@@ -4,7 +4,7 @@ namespace Tests;
 
 use numphp\np_array;
 
-class SetItemsTest extends \PHPUnit_Framework_TestCase
+class SetItemsTest extends \PHPUnit\Framework\TestCase
 {
 
     /**

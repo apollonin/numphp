@@ -5,7 +5,7 @@ namespace Tests;
 use numphp\np_array;
 use numphp\Slicing\Slice;
 
-class SliceTest extends \PHPUnit_Framework_TestCase
+class SliceTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var np_array
