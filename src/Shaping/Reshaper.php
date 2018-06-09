@@ -14,7 +14,9 @@ trait Reshaper
     {
         $result = [];
 
-        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$result) {
+        $arrayCopy = $this->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item) use (&$result) {
            $result[] = $item;
         });
 

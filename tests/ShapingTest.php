@@ -34,17 +34,19 @@ class ShapingTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($res->getArrayCopy(), [[0, 1], [2, 3], [4, 5], [6, 7], [8, 9], [10, 11]]);
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testReshapeInvalidShape()
     {
-        $this->expectException(\Exception::class);
-        
         $res = $this->matrix->reshape([1, 2]);
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testDiagonalInvalidShape()
     {
-        $this->expectException(\Exception::class);
-        
         $res = $this->list->diagonal();
     }
 

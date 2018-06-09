@@ -203,7 +203,7 @@ abstract class Operators
             if ($item instanceof np_array)
                 $result[] = self::pow($item, $arg);
             else
-                $result[] = $item ** $arg[$isScalar?0:$index];
+                $result[] = pow($item, $arg[$isScalar?0:$index]);
 
         return $result;
     }

@@ -31,7 +31,9 @@ trait Statistics
     {
         $min = INF;
 
-        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$min) {
+        $arrayCopy = $this->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item) use (&$min) {
             if ($item < $min)
                 $min = $item;
         });
@@ -43,7 +45,9 @@ trait Statistics
     {
         $max = -INF;
 
-        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$max) {
+        $arrayCopy = $this->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item) use (&$max) {
             if ($item > $max)
                 $max = $item;
         });
@@ -55,7 +59,9 @@ trait Statistics
     {
         $sum = 0;
 
-        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$sum) {
+        $arrayCopy = $this->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item) use (&$sum) {
             $sum += $item;
         });
 
@@ -66,7 +72,9 @@ trait Statistics
     {
         $count = 0;
 
-        array_walk_recursive(($this->getArrayCopy()), function($item) use (&$count) {
+        $arrayCopy = $this->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item) use (&$count) {
             $count++;
         });
 

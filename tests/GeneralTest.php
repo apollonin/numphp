@@ -14,17 +14,19 @@ class GeneralTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals((array) $res, [1, 2, 3]);
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testExceptionInvalidArg()
     {
-        $this->expectException(\Exception::class);
-
         $res = new np_array('string');
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testExceptionPrivateProperty()
     {
-        $this->expectException(\Exception::class);
-
         $res = (new np_array([1]))->size;
     }
 }

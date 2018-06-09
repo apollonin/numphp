@@ -57,10 +57,11 @@ class RandomTest extends \PHPUnit\Framework\TestCase
         }
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testExceptionWhileInvalidSize()
     {
-        $this->expectException(\Exception::class);
-
         $res = Random::randint(10, 15, -5);
     }
 }
