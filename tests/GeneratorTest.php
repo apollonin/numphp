@@ -46,10 +46,11 @@ class GeneratorTest extends \PHPUnit\Framework\TestCase
         }
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testFullException()
     {
-        $this->expectException(\Exception::class);
-
         $res = Generator::full(15, 'hi there');
     }
 
@@ -107,7 +108,9 @@ class GeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('numphp\np_array', $res);
         $this->assertEquals($res->countAll(), 10);
 
-        array_walk_recursive(($res->getArrayCopy()), function($item){
+        $arrayCopy = $res->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item){
             $this->assertEquals(1, $item);
         });
     }
@@ -119,7 +122,9 @@ class GeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('numphp\np_array', $res);
         $this->assertEquals($res->countAll(), 15);
 
-        array_walk_recursive(($res->getArrayCopy()), function($item){
+        $arrayCopy = $res->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item){
             $this->assertEquals(0, $item);
         });
     }
@@ -131,7 +136,9 @@ class GeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertInstanceOf('numphp\np_array', $res);
         $this->assertEquals($res->countAll(), 14);
 
-        array_walk_recursive(($res->getArrayCopy()), function($item){
+        $arrayCopy = $res->getArrayCopy();
+
+        array_walk_recursive($arrayCopy, function($item){
             $this->assertEquals(999, $item);
         });
     }
@@ -158,10 +165,11 @@ class GeneratorTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(1, $res[2][2]);
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testMatrixFromDiagonalExceptionInvalidDimension()
     {
-        $this->expectException(\Exception::class);
-
         $res = Generator::diagonal([[1,2], [3,4]]);
     }
 }

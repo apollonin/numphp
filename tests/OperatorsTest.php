@@ -80,17 +80,19 @@ class OperatorsTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals((array) $res, [-10, -9, -8, -7, -6, -5, -4, -3, -2, -1]);
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testExceptionInvalidArg()
     {
-        $this->expectException(\Exception::class);
-
         $res = $this->list->add('string');
     }
 
+    /**
+     * @expectedException \Exception
+     */
     public function testExceptionInvalidOperator()
     {
-        $this->expectException(\Exception::class);
-
         $res = $this->list->qqq('string');
     }
 }

@@ -83,5 +83,7 @@ class StatisticsTest extends \PHPUnit\Framework\TestCase
     public function testMatrixDescribe()
     {
         $res = $this->matrix->describe();
+
+        $this->assertEquals(array_keys((array)$res), ['count', 'max', 'mean', 'median', 'min', 'sum']);
     }
 }
