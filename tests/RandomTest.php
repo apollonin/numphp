@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use numphp\np_array;
 use numphp\Random\Random;
 
 class RandomTest extends \PHPUnit\Framework\TestCase

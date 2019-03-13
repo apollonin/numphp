@@ -3,7 +3,6 @@
 namespace Tests;
 
 use numphp\np_array;
-use numphp\Shaping\Reshaper;
 
 class ShapingTest extends \PHPUnit\Framework\TestCase
 {
@@ -12,7 +11,7 @@ class ShapingTest extends \PHPUnit\Framework\TestCase
      */
     private $list;
 
-    public function setUp()
+    protected function setUp()
     {
         $this->list = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
         $this->listEven = new np_array([0, 1, 2, 3, 4, 5, 6, 7, 8]);
