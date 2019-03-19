@@ -9,3 +9,4 @@ composer.lock
 *.sublime*
 clover.xml
 /tmp
+play.php

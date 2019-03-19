@@ -41,6 +41,7 @@ composer require apollonin/numphp
 * Get dimensional data
   * shape
   * dimension
+* Concatenate arrays
 
 np_array also has classical array behaviour. So you are able to iterate through it as usual.
 
@@ -532,4 +533,38 @@ $result = $matrix->reshape([6, 2]);
  [ 6,  7],
  [ 8,  9],
  [10, 11]]
+```
+
+
+## Concatenation
+
+**concatenate arrays**
+
+You can concatenate two or more arrays into one. Logic is similar to [array_merge](http://php.net/manual/en/function.array-merge.php) native php method
+
+```
+$l1 = Generator::arange(1, 5);
+$l2 = Generator::arange(5, 8);
+$l3 = Generator::arange(8, 10);
+
+$result = np::concatenate($l1, $l2, $l3)
+
+//result
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+**concatenate matrixes**
+
+The same logic can be applied to matrixes
+
+```
+$m2 = Generator::ones([1, 4]);
+$result = np::concatenate($matrix, $m2)
+
+//result
+[[ 0,  1,  2,  3],
+ [ 4,  5,  6,  7],
+ [ 8,  9, 10, 11],
+ [ 1,  1,  1,  1]]
+
 ```

@@ -2,6 +2,7 @@
 
 require_once realpath(__DIR__ . '/../vendor') . '/autoload.php';
 
+use numphp\np;
 use numphp\np_array;
 use numphp\Operator\Bitwise;
 use numphp\Random\Random;
@@ -111,3 +112,14 @@ echo 'describe ' . print_r($list->describe(), true) . "\n\n";
 echo 'flatten: ' . "\n" . $list->flatten() . "\n\n";
 
 echo 'reshape to [2, 6]: ' . "\n" . $list->reshape([2, 5]) . "\n\n";
+
+
+/**
+ * Concatenations
+ */
+
+$l1 = Generator::arange(1, 5);
+$l2 = Generator::arange(5, 8);
+$l3 = Generator::arange(8, 10);
+
+echo 'concatenate: ' . $l1 . ', ' . $l2 . ' and ' . $l3 . "\n" . np::concatenate($l1, $l2, $l3) . "\n\n";

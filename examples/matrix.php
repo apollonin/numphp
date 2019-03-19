@@ -2,6 +2,7 @@
 
 require_once realpath(__DIR__ . '/../vendor') . '/autoload.php';
 
+use numphp\np;
 use numphp\np_array;
 use numphp\Generator\Generator;
 
@@ -69,3 +70,6 @@ echo 'flatten: ' . "\n" . $matrix->flatten() . "\n\n";
 echo 'reshape to [6, 2]: ' . "\n" . $matrix->reshape([6, 2]) . "\n\n";
 
 echo 'diagonal is: ' . "\n" . $matrix->diagonal() . "\n\n";
+
+$m2 = Generator::ones([1, 4]);
+echo 'concatenate: ' . "\n" . $matrix . "\n" . ' and ' . "\n" . $m2 . ":\n" . np::concatenate($matrix, $m2) . "\n\n";
